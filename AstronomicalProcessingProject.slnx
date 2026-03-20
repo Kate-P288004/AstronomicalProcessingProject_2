@@ -1,0 +1,6 @@
+<Solution>
+  <Folder Name="/proto/" />
+  <Project Path="AstroMathDLL/AstroMathDLL.csproj" />
+  <Project Path="ClientApp/ClientApp.csproj" />
+  <Project Path="ServerApp/ServerApp.csproj" />
+</Solution>
