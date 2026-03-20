@@ -1,0 +1,49 @@
+syntax = "proto3";
+
+option csharp_namespace = "AstroProto";
+
+service AstroService {
+  rpc CalculateVelocity (VelocityRequest) returns (VelocityReply);
+  rpc CalculateDistance (DistanceRequest) returns (DistanceReply);
+  rpc ConvertTemperature (TemperatureRequest) returns (TemperatureReply);
+  rpc CalculateRadius (RadiusRequest) returns (RadiusReply);
+}
+
+// ---------- Velocity ----------
+message VelocityRequest {
+  double observedWavelength = 1;
+  double restWavelength = 2;
+}
+
+message VelocityReply {
+  double velocity = 1;
+}
+
+// ---------- Distance ----------
+message DistanceRequest {
+  double parallax = 1;
+}
+
+message DistanceReply {
+  double parsecs = 1;
+  double lightYears = 2;
+  double km = 3;
+}
+
+// ---------- Temperature ----------
+message TemperatureRequest {
+  double celsius = 1;
+}
+
+message TemperatureReply {
+  double kelvin = 1;
+}
+
+// ---------- Black Hole ----------
+message RadiusRequest {
+  double mass = 1;
+}
+
+message RadiusReply {
+  double radius = 1;
+}
