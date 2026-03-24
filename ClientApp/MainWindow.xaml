@@ -79,13 +79,13 @@
                                 Grid.ColumnSpan="2"
                                 Content="Calculate Velocity"
                                 Height="32"
-                                Click="BtnVelocity_Click"/>
+                                Click="BtnVelocity_Click" Margin="0,0,24,0"/>
 
                         <TextBlock x:Name="lblRest" Grid.Row="2" Grid.Column="0" Text="Rest Wavelength (nm):" VerticalAlignment="Center" Margin="0,0,10,0"/>
                         <TextBox x:Name="txtRest" Grid.Row="2" Grid.Column="1" Height="28"/>
 
                         <TextBlock x:Name="lblVelocity" Grid.Row="2" Grid.Column="3" Text="Radial Velocity (m/s):" VerticalAlignment="Center" Margin="0,0,10,0"/>
-                        <TextBox x:Name="txtVelocity" Grid.Row="2" Grid.Column="4" Height="28" IsReadOnly="True" Margin="0,0,21,0"/>
+                        <TextBox x:Name="txtVelocity" Grid.Row="2" Grid.Column="4" Height="28" IsReadOnly="True" Margin="0,0,45,0"/>
                     </Grid>
                 </GroupBox>
 
@@ -116,13 +116,13 @@
                                 Grid.ColumnSpan="2"
                                 Content="Calculate Distance"
                                 Height="32"
-                                Click="BtnDistance_Click"/>
+                                Click="BtnDistance_Click" Margin="0,0,22,0"/>
 
                         <TextBlock x:Name="lblParsecs" Grid.Row="2" Grid.Column="3" Text="Distance (parsecs):" VerticalAlignment="Center" Margin="0,0,10,0"/>
-                        <TextBox x:Name="txtParsecs" Grid.Row="2" Grid.Column="4" Height="28" IsReadOnly="True" Margin="0,0,43,0"/>
+                        <TextBox x:Name="txtParsecs" Grid.Row="2" Grid.Column="4" Height="28" IsReadOnly="True" Margin="0,0,68,0"/>
 
                         <TextBlock x:Name="lblLightYears" Grid.Row="4" Grid.Column="3" Text="Distance (light-years):" VerticalAlignment="Center" Margin="0,0,10,0"/>
-                        <TextBox x:Name="txtLightYears" Grid.Row="4" Grid.Column="4" Height="28" IsReadOnly="True" Margin="0,0,43,0"/>
+                        <TextBox x:Name="txtLightYears" Grid.Row="4" Grid.Column="4" Height="28" IsReadOnly="True" Margin="0,0,68,0"/>
 
                         <TextBlock x:Name="lblKm" Grid.Row="2" Grid.Column="0" Text="Distance (km):" VerticalAlignment="Center" Margin="0,0,10,0"/>
                         <TextBox x:Name="txtKm" Grid.Row="2" Grid.Column="1" Height="28" IsReadOnly="True"/>
@@ -154,10 +154,10 @@
                                 Grid.ColumnSpan="2"
                                 Content="Convert to Kelvin"
                                 Height="32"
-                                Click="BtnTemp_Click"/>
+                                Click="BtnTemp_Click" Margin="0,0,21,0"/>
 
                         <TextBlock x:Name="lblKelvin" Grid.Row="2" Grid.Column="3" Text="Temperature (K):" VerticalAlignment="Center" Margin="0,0,10,0"/>
-                        <TextBox x:Name="txtKelvin" Grid.Row="2" Grid.Column="4" Height="28" IsReadOnly="True"/>
+                        <TextBox x:Name="txtKelvin" Grid.Row="2" Grid.Column="4" Height="28" IsReadOnly="True" Margin="0,0,65,0"/>
                     </Grid>
                 </GroupBox>
 
@@ -186,10 +186,10 @@
                                 Grid.ColumnSpan="2"
                                 Content="Calculate Radius"
                                 Height="32"
-                                Click="BtnRadius_Click"/>
+                                Click="BtnRadius_Click" Margin="0,0,20,0"/>
 
                         <TextBlock x:Name="lblRadius" Grid.Row="2" Grid.Column="3" Text="Schwarzschild Radius (m):" VerticalAlignment="Center" Margin="0,0,10,0"/>
-                        <TextBox x:Name="txtRadius" Grid.Row="2" Grid.Column="4" Height="28" IsReadOnly="True"/>
+                        <TextBox x:Name="txtRadius" Grid.Row="2" Grid.Column="4" Height="28" IsReadOnly="True" Margin="0,0,64,0"/>
                     </Grid>
                 </GroupBox>
 

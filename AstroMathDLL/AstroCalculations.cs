@@ -39,7 +39,7 @@ namespace AstroMathDLL
 
         public double ConvertCelsiusToKelvin(double celsius)
         {
-            return celsius + 272.15;
+            return celsius + 273.15;
         }
 
         public double CalculateSchwarzschildRadius(double mass)
