@@ -68,41 +68,12 @@
 	<data name="AppTitle" xml:space="preserve">
     <value>Astronomisches Verarbeitungssystem</value>
   </data>
-	<data name="BtnCalculateDistance" xml:space="preserve">
-    <value>Distanz berechnen</value>
-  </data>
-	<data name="BtnCalculateHorizon" xml:space="preserve">
-    <value>Horizont berechnen</value>
-  </data>
-	<data name="BtnCalculateVelocity" xml:space="preserve">
-    <value>Geschwindigkeit berechnen</value>
-  </data>
-	<data name="BtnConvertTemperature" xml:space="preserve">
-    <value>Temperatur umrechnen</value>
-  </data>
-	<data name="LblEventHorizon" xml:space="preserve">
-    <value>Ereignishorizont</value>
-  </data>
-	<data name="LblResult" xml:space="preserve">
-    <value>Ergebnis</value>
-  </data>
-	<data name="LblStarDistance" xml:space="preserve">
-    <value>Sterndistanz</value>
-  </data>
-	<data name="LblStarVelocity" xml:space="preserve">
-    <value>Sterngeschwindigkeit</value>
-  </data>
-	<data name="LblTemperatureKelvin" xml:space="preserve">
-    <value>Temperatur (Kelvin)</value>
-  </data>
-	<data name="MenuBackgroundColor" xml:space="preserve">
-    <value>Hintergrundfarbe</value>
+
+	<data name="MenuLanguage" xml:space="preserve">
+    <value>Sprache</value>
   </data>
 	<data name="MenuEnglish" xml:space="preserve">
     <value>Englisch</value>
-  </data>
-	<data name="MenuFont" xml:space="preserve">
-    <value>Schriftart</value>
   </data>
 	<data name="MenuFrench" xml:space="preserve">
     <value>Französisch</value>
@@ -110,15 +81,126 @@
 	<data name="MenuGerman" xml:space="preserve">
     <value>Deutsch</value>
   </data>
-	<data name="MenuLanguage" xml:space="preserve">
-    <value>Sprache</value>
+
+	<data name="MenuTheme" xml:space="preserve">
+    <value>Design</value>
   </data>
 	<data name="MenuNightMode" xml:space="preserve">
     <value>Nachtmodus</value>
   </data>
-	<data name="MenuTheme" xml:space="preserve">
-    <value>Design</value>
+	<data name="MenuBackgroundColor" xml:space="preserve">
+    <value>Hintergrundfarbe</value>
   </data>
+	<data name="MenuFont" xml:space="preserve">
+    <value>Schriftart</value>
+  </data>
+
+	<data name="MenuCustomise" xml:space="preserve">
+    <value>Anpassen</value>
+  </data>
+	<data name="MenuBackgroundColour" xml:space="preserve">
+    <value>Hintergrundfarbe ändern</value>
+  </data>
+	<data name="MenuLabelColour" xml:space="preserve">
+    <value>Labelfarbe ändern</value>
+  </data>
+	<data name="MenuTextBoxColour" xml:space="preserve">
+    <value>TextBox-Farbe ändern</value>
+  </data>
+
+	<data name="MenuAbout" xml:space="preserve">
+    <value>Info</value>
+  </data>
+	<data name="MenuAboutApp" xml:space="preserve">
+    <value>Anwendungsinfo</value>
+  </data>
+
+	<data name="MenuLightTheme" xml:space="preserve">
+    <value>Helles Design</value>
+  </data>
+	<data name="MenuDarkTheme" xml:space="preserve">
+    <value>Dunkles Design</value>
+  </data>
+	<data name="MenuBlueTheme" xml:space="preserve">
+    <value>Blaues Design</value>
+  </data>
+
+	<data name="GrpVelocity" xml:space="preserve">
+    <value>Sterngeschwindigkeit (Doppler-Effekt)</value>
+  </data>
+	<data name="GrpDistance" xml:space="preserve">
+    <value>Sterndistanz (Parallaxe)</value>
+  </data>
+	<data name="GrpTemperature" xml:space="preserve">
+    <value>Temperaturumrechnung (°C zu K)</value>
+  </data>
+	<data name="GrpRadius" xml:space="preserve">
+    <value>Ereignishorizont eines Schwarzen Lochs (Schwarzschild-Radius)</value>
+  </data>
+
+	<data name="LblStarVelocity" xml:space="preserve">
+    <value>Sterngeschwindigkeit</value>
+  </data>
+	<data name="LblStarDistance" xml:space="preserve">
+    <value>Sterndistanz</value>
+  </data>
+	<data name="LblTemperatureKelvin" xml:space="preserve">
+    <value>Temperatur (Kelvin)</value>
+  </data>
+	<data name="LblEventHorizon" xml:space="preserve">
+    <value>Ereignishorizont</value>
+  </data>
+	<data name="LblResult" xml:space="preserve">
+    <value>Ergebnis</value>
+  </data>
+
+	<data name="LblObserved" xml:space="preserve">
+    <value>Beobachtete Wellenlänge (nm):</value>
+  </data>
+	<data name="LblRest" xml:space="preserve">
+    <value>Ruhewellenlänge (nm):</value>
+  </data>
+	<data name="LblVelocity" xml:space="preserve">
+    <value>Radialgeschwindigkeit (m/s):</value>
+  </data>
+	<data name="LblParallax" xml:space="preserve">
+    <value>Parallaxwinkel (Bogensek.):</value>
+  </data>
+	<data name="LblParsecs" xml:space="preserve">
+    <value>Distanz (Parsec):</value>
+  </data>
+	<data name="LblLightYears" xml:space="preserve">
+    <value>Distanz (Lichtjahre):</value>
+  </data>
+	<data name="LblKm" xml:space="preserve">
+    <value>Distanz (km):</value>
+  </data>
+	<data name="LblCelsiusFull" xml:space="preserve">
+    <value>Temperatur (°C):</value>
+  </data>
+	<data name="LblKelvin" xml:space="preserve">
+    <value>Temperatur (K):</value>
+  </data>
+	<data name="LblMass" xml:space="preserve">
+    <value>Schwarze-Loch-Masse (kg):</value>
+  </data>
+	<data name="LblRadius" xml:space="preserve">
+    <value>Schwarzschild-Radius (m):</value>
+  </data>
+
+	<data name="BtnCalculateVelocity" xml:space="preserve">
+    <value>Geschwindigkeit berechnen</value>
+  </data>
+	<data name="BtnCalculateDistance" xml:space="preserve">
+    <value>Distanz berechnen</value>
+  </data>
+	<data name="BtnConvertTemperature" xml:space="preserve">
+    <value>Temperatur umrechnen</value>
+  </data>
+	<data name="BtnCalculateHorizon" xml:space="preserve">
+    <value>Horizont berechnen</value>
+  </data>
+
 	<data name="MsgInvalidInput" xml:space="preserve">
     <value>Ungültige Eingabe</value>
   </data>
@@ -127,5 +209,9 @@
   </data>
 	<data name="MsgServerError" xml:space="preserve">
     <value>Serverfehler</value>
+  </data>
+
+	<data name="StatusReady" xml:space="preserve">
+    <value>Bereit</value>
   </data>
 </root>

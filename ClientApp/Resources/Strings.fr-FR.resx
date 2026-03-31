@@ -1,131 +1,217 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
-  <!-- 
+	<!-- 
     Microsoft ResX Schema 
     
     Version 2.0
   -->
-  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
-    <xsd:element name="root" msdata:IsDataSet="true">
-      <xsd:complexType>
-        <xsd:choice maxOccurs="unbounded">
-          <xsd:element name="metadata">
-            <xsd:complexType>
-              <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" />
-              </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string" />
-              <xsd:attribute name="type" type="xsd:string" />
-              <xsd:attribute name="mimetype" type="xsd:string" />
-              <xsd:attribute ref="xml:space" />
-            </xsd:complexType>
-          </xsd:element>
-          <xsd:element name="assembly">
-            <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string" />
-              <xsd:attribute name="name" type="xsd:string" />
-            </xsd:complexType>
-          </xsd:element>
-          <xsd:element name="data">
-            <xsd:complexType>
-              <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
-              </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-              <xsd:attribute ref="xml:space" />
-            </xsd:complexType>
-          </xsd:element>
-          <xsd:element name="resheader">
-            <xsd:complexType>
-              <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-              </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" />
-            </xsd:complexType>
-          </xsd:element>
-        </xsd:choice>
-      </xsd:complexType>
-    </xsd:element>
-  </xsd:schema>
+	<xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+		<xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+		<xsd:element name="root" msdata:IsDataSet="true">
+			<xsd:complexType>
+				<xsd:choice maxOccurs="unbounded">
+					<xsd:element name="metadata">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="value" type="xsd:string" minOccurs="0" />
+							</xsd:sequence>
+							<xsd:attribute name="name" use="required" type="xsd:string" />
+							<xsd:attribute name="type" type="xsd:string" />
+							<xsd:attribute name="mimetype" type="xsd:string" />
+							<xsd:attribute ref="xml:space" />
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="assembly">
+						<xsd:complexType>
+							<xsd:attribute name="alias" type="xsd:string" />
+							<xsd:attribute name="name" type="xsd:string" />
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="data">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+								<xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+							</xsd:sequence>
+							<xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+							<xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+							<xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+							<xsd:attribute ref="xml:space" />
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="resheader">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+							</xsd:sequence>
+							<xsd:attribute name="name" type="xsd:string" use="required" />
+						</xsd:complexType>
+					</xsd:element>
+				</xsd:choice>
+			</xsd:complexType>
+		</xsd:element>
+	</xsd:schema>
 
-  <resheader name="resmimetype">
-    <value>text/microsoft-resx</value>
-  </resheader>
-  <resheader name="version">
-    <value>2.0</value>
-  </resheader>
-  <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </resheader>
-  <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </resheader>
+	<resheader name="resmimetype">
+		<value>text/microsoft-resx</value>
+	</resheader>
+	<resheader name="version">
+		<value>2.0</value>
+	</resheader>
+	<resheader name="reader">
+		<value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+	</resheader>
+	<resheader name="writer">
+		<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+	</resheader>
 
-  <data name="AppTitle" xml:space="preserve">
+	<data name="AppTitle" xml:space="preserve">
     <value>Système de traitement astronomique</value>
   </data>
-  <data name="BtnCalculateDistance" xml:space="preserve">
-    <value>Calculer la distance</value>
-  </data>
-  <data name="BtnCalculateHorizon" xml:space="preserve">
-    <value>Calculer l’horizon</value>
-  </data>
-  <data name="BtnCalculateVelocity" xml:space="preserve">
-    <value>Calculer la vitesse</value>
-  </data>
-  <data name="BtnConvertTemperature" xml:space="preserve">
-    <value>Convertir la température</value>
-  </data>
-  <data name="LblEventHorizon" xml:space="preserve">
-    <value>Horizon des événements</value>
-  </data>
-  <data name="LblResult" xml:space="preserve">
-    <value>Résultat</value>
-  </data>
-  <data name="LblStarDistance" xml:space="preserve">
-    <value>Distance de l’étoile</value>
-  </data>
-  <data name="LblStarVelocity" xml:space="preserve">
-    <value>Vitesse de l’étoile</value>
-  </data>
-  <data name="LblTemperatureKelvin" xml:space="preserve">
-    <value>Température (Kelvin)</value>
-  </data>
-  <data name="MenuBackgroundColor" xml:space="preserve">
-    <value>Couleur d’arrière-plan</value>
-  </data>
-  <data name="MenuEnglish" xml:space="preserve">
-    <value>Anglais</value>
-  </data>
-  <data name="MenuFont" xml:space="preserve">
-    <value>Police</value>
-  </data>
-  <data name="MenuFrench" xml:space="preserve">
-    <value>Français</value>
-  </data>
-  <data name="MenuGerman" xml:space="preserve">
-    <value>Allemand</value>
-  </data>
-  <data name="MenuLanguage" xml:space="preserve">
+
+	<data name="MenuLanguage" xml:space="preserve">
     <value>Langue</value>
   </data>
-  <data name="MenuNightMode" xml:space="preserve">
-    <value>Mode nuit</value>
+	<data name="MenuEnglish" xml:space="preserve">
+    <value>Anglais</value>
   </data>
-  <data name="MenuTheme" xml:space="preserve">
+	<data name="MenuFrench" xml:space="preserve">
+    <value>Français</value>
+  </data>
+	<data name="MenuGerman" xml:space="preserve">
+    <value>Allemand</value>
+  </data>
+
+	<data name="MenuTheme" xml:space="preserve">
     <value>Thème</value>
   </data>
-  <data name="MsgInvalidInput" xml:space="preserve">
+	<data name="MenuNightMode" xml:space="preserve">
+    <value>Mode nuit</value>
+  </data>
+	<data name="MenuBackgroundColor" xml:space="preserve">
+    <value>Couleur d’arrière-plan</value>
+  </data>
+	<data name="MenuFont" xml:space="preserve">
+    <value>Police</value>
+  </data>
+
+	<data name="MenuCustomise" xml:space="preserve">
+    <value>Personnaliser</value>
+  </data>
+	<data name="MenuBackgroundColour" xml:space="preserve">
+    <value>Changer la couleur d’arrière-plan</value>
+  </data>
+	<data name="MenuLabelColour" xml:space="preserve">
+    <value>Changer la couleur des libellés</value>
+  </data>
+	<data name="MenuTextBoxColour" xml:space="preserve">
+    <value>Changer la couleur des zones de texte</value>
+  </data>
+
+	<data name="MenuAbout" xml:space="preserve">
+    <value>À propos</value>
+  </data>
+	<data name="MenuAboutApp" xml:space="preserve">
+    <value>Informations sur l’application</value>
+  </data>
+
+	<data name="MenuLightTheme" xml:space="preserve">
+    <value>Thème clair</value>
+  </data>
+	<data name="MenuDarkTheme" xml:space="preserve">
+    <value>Thème sombre</value>
+  </data>
+	<data name="MenuBlueTheme" xml:space="preserve">
+    <value>Thème bleu</value>
+  </data>
+
+	<data name="GrpVelocity" xml:space="preserve">
+    <value>Vitesse de l’étoile (effet Doppler)</value>
+  </data>
+	<data name="GrpDistance" xml:space="preserve">
+    <value>Distance de l’étoile (parallaxe)</value>
+  </data>
+	<data name="GrpTemperature" xml:space="preserve">
+    <value>Conversion de température (°C vers K)</value>
+  </data>
+	<data name="GrpRadius" xml:space="preserve">
+    <value>Horizon des événements du trou noir (rayon de Schwarzschild)</value>
+  </data>
+
+	<data name="LblStarVelocity" xml:space="preserve">
+    <value>Vitesse de l’étoile</value>
+  </data>
+	<data name="LblStarDistance" xml:space="preserve">
+    <value>Distance de l’étoile</value>
+  </data>
+	<data name="LblTemperatureKelvin" xml:space="preserve">
+    <value>Température (Kelvin)</value>
+  </data>
+	<data name="LblEventHorizon" xml:space="preserve">
+    <value>Horizon des événements</value>
+  </data>
+	<data name="LblResult" xml:space="preserve">
+    <value>Résultat</value>
+  </data>
+
+	<data name="LblObserved" xml:space="preserve">
+    <value>Longueur d’onde observée (nm):</value>
+  </data>
+	<data name="LblRest" xml:space="preserve">
+    <value>Longueur d’onde au repos (nm):</value>
+  </data>
+	<data name="LblVelocity" xml:space="preserve">
+    <value>Vitesse radiale (m/s):</value>
+  </data>
+	<data name="LblParallax" xml:space="preserve">
+    <value>Angle de parallaxe (arcsec):</value>
+  </data>
+	<data name="LblParsecs" xml:space="preserve">
+    <value>Distance (parsecs):</value>
+  </data>
+	<data name="LblLightYears" xml:space="preserve">
+    <value>Distance (années-lumière):</value>
+  </data>
+	<data name="LblKm" xml:space="preserve">
+    <value>Distance (km):</value>
+  </data>
+	<data name="LblCelsiusFull" xml:space="preserve">
+    <value>Température (°C):</value>
+  </data>
+	<data name="LblKelvin" xml:space="preserve">
+    <value>Température (K):</value>
+  </data>
+	<data name="LblMass" xml:space="preserve">
+    <value>Masse du trou noir (kg):</value>
+  </data>
+	<data name="LblRadius" xml:space="preserve">
+    <value>Rayon de Schwarzschild (m):</value>
+  </data>
+
+	<data name="BtnCalculateVelocity" xml:space="preserve">
+    <value>Calculer la vitesse</value>
+  </data>
+	<data name="BtnCalculateDistance" xml:space="preserve">
+    <value>Calculer la distance</value>
+  </data>
+	<data name="BtnConvertTemperature" xml:space="preserve">
+    <value>Convertir la température</value>
+  </data>
+	<data name="BtnCalculateHorizon" xml:space="preserve">
+    <value>Calculer l’horizon</value>
+  </data>
+
+	<data name="MsgInvalidInput" xml:space="preserve">
     <value>Entrée invalide</value>
   </data>
-  <data name="MsgOutOfRange" xml:space="preserve">
+	<data name="MsgOutOfRange" xml:space="preserve">
     <value>Valeur hors limites</value>
   </data>
-  <data name="MsgServerError" xml:space="preserve">
+	<data name="MsgServerError" xml:space="preserve">
     <value>Erreur du serveur</value>
+  </data>
+
+	<data name="StatusReady" xml:space="preserve">
+    <value>Prêt</value>
   </data>
 </root>

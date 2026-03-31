@@ -61,7 +61,7 @@ namespace ClientApp.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Système de traitement astronomique.
+        ///   Looks up a localized string similar to Astronomical Processing System.
         /// </summary>
         internal static string AppTitle {
             get {
@@ -70,7 +70,7 @@ namespace ClientApp.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Calculer la distance.
+        ///   Looks up a localized string similar to Calculate Distance.
         /// </summary>
         internal static string BtnCalculateDistance {
             get {
@@ -79,7 +79,7 @@ namespace ClientApp.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Calculer l’horizon.
+        ///   Looks up a localized string similar to Calculate Horizon.
         /// </summary>
         internal static string BtnCalculateHorizon {
             get {
@@ -88,7 +88,7 @@ namespace ClientApp.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Calculer la vitesse.
+        ///   Looks up a localized string similar to Calculate Velocity.
         /// </summary>
         internal static string BtnCalculateVelocity {
             get {
@@ -97,7 +97,7 @@ namespace ClientApp.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Convertir la température.
+        ///   Looks up a localized string similar to Convert Temperature.
         /// </summary>
         internal static string BtnConvertTemperature {
             get {
@@ -106,7 +106,52 @@ namespace ClientApp.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Horizon des événements.
+        ///   Looks up a localized string similar to Star Distance (Parallax).
+        /// </summary>
+        internal static string GrpDistance {
+            get {
+                return ResourceManager.GetString("GrpDistance", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Black Hole Event Horizon (Schwarzschild Radius).
+        /// </summary>
+        internal static string GrpRadius {
+            get {
+                return ResourceManager.GetString("GrpRadius", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Temperature Conversion (°C to K).
+        /// </summary>
+        internal static string GrpTemperature {
+            get {
+                return ResourceManager.GetString("GrpTemperature", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Star Velocity (Doppler Effect).
+        /// </summary>
+        internal static string GrpVelocity {
+            get {
+                return ResourceManager.GetString("GrpVelocity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Temperature (°C):.
+        /// </summary>
+        internal static string LblCelsiusFull {
+            get {
+                return ResourceManager.GetString("LblCelsiusFull", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Event Horizon.
         /// </summary>
         internal static string LblEventHorizon {
             get {
@@ -115,7 +160,88 @@ namespace ClientApp.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ResultRésultat.
+        ///   Looks up a localized string similar to Temperature (K):.
+        /// </summary>
+        internal static string LblKelvin {
+            get {
+                return ResourceManager.GetString("LblKelvin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Distance (km):.
+        /// </summary>
+        internal static string LblKm {
+            get {
+                return ResourceManager.GetString("LblKm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Distance (light-years):.
+        /// </summary>
+        internal static string LblLightYears {
+            get {
+                return ResourceManager.GetString("LblLightYears", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Black Hole Mass (kg):.
+        /// </summary>
+        internal static string LblMass {
+            get {
+                return ResourceManager.GetString("LblMass", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Observed Wavelength (nm):.
+        /// </summary>
+        internal static string LblObserved {
+            get {
+                return ResourceManager.GetString("LblObserved", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Parallax Angle (arcsec):.
+        /// </summary>
+        internal static string LblParallax {
+            get {
+                return ResourceManager.GetString("LblParallax", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Distance (parsecs):.
+        /// </summary>
+        internal static string LblParsecs {
+            get {
+                return ResourceManager.GetString("LblParsecs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Schwarzschild Radius (m):.
+        /// </summary>
+        internal static string LblRadius {
+            get {
+                return ResourceManager.GetString("LblRadius", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rest Wavelength (nm):.
+        /// </summary>
+        internal static string LblRest {
+            get {
+                return ResourceManager.GetString("LblRest", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Result.
         /// </summary>
         internal static string LblResult {
             get {
@@ -124,7 +250,7 @@ namespace ClientApp.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Distance de l’étoile.
+        ///   Looks up a localized string similar to Star Distance.
         /// </summary>
         internal static string LblStarDistance {
             get {
@@ -133,7 +259,7 @@ namespace ClientApp.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Vitesse de l’étoile.
+        ///   Looks up a localized string similar to Star Velocity.
         /// </summary>
         internal static string LblStarVelocity {
             get {
@@ -142,7 +268,7 @@ namespace ClientApp.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Température (Kelvin).
+        ///   Looks up a localized string similar to Temperature (Kelvin).
         /// </summary>
         internal static string LblTemperatureKelvin {
             get {
@@ -151,7 +277,34 @@ namespace ClientApp.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Couleur d’arrière-plan.
+        ///   Looks up a localized string similar to Radial Velocity (m/s):.
+        /// </summary>
+        internal static string LblVelocity {
+            get {
+                return ResourceManager.GetString("LblVelocity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to About.
+        /// </summary>
+        internal static string MenuAbout {
+            get {
+                return ResourceManager.GetString("MenuAbout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Application Info.
+        /// </summary>
+        internal static string MenuAboutApp {
+            get {
+                return ResourceManager.GetString("MenuAboutApp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Background Colour.
         /// </summary>
         internal static string MenuBackgroundColor {
             get {
@@ -160,7 +313,43 @@ namespace ClientApp.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Anglais.
+        ///   Looks up a localized string similar to Change Background Colour.
+        /// </summary>
+        internal static string MenuBackgroundColour {
+            get {
+                return ResourceManager.GetString("MenuBackgroundColour", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Blue Theme.
+        /// </summary>
+        internal static string MenuBlueTheme {
+            get {
+                return ResourceManager.GetString("MenuBlueTheme", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Customise.
+        /// </summary>
+        internal static string MenuCustomise {
+            get {
+                return ResourceManager.GetString("MenuCustomise", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dark Theme.
+        /// </summary>
+        internal static string MenuDarkTheme {
+            get {
+                return ResourceManager.GetString("MenuDarkTheme", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to English.
         /// </summary>
         internal static string MenuEnglish {
             get {
@@ -169,7 +358,7 @@ namespace ClientApp.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Police.
+        ///   Looks up a localized string similar to Font.
         /// </summary>
         internal static string MenuFont {
             get {
@@ -178,7 +367,7 @@ namespace ClientApp.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Français.
+        ///   Looks up a localized string similar to French.
         /// </summary>
         internal static string MenuFrench {
             get {
@@ -187,7 +376,7 @@ namespace ClientApp.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Allemand.
+        ///   Looks up a localized string similar to German.
         /// </summary>
         internal static string MenuGerman {
             get {
@@ -196,7 +385,16 @@ namespace ClientApp.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Langue.
+        ///   Looks up a localized string similar to Change Label Colour.
+        /// </summary>
+        internal static string MenuLabelColour {
+            get {
+                return ResourceManager.GetString("MenuLabelColour", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Language.
         /// </summary>
         internal static string MenuLanguage {
             get {
@@ -205,7 +403,16 @@ namespace ClientApp.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Mode nuit.
+        ///   Looks up a localized string similar to Light Theme.
+        /// </summary>
+        internal static string MenuLightTheme {
+            get {
+                return ResourceManager.GetString("MenuLightTheme", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Night Mode.
         /// </summary>
         internal static string MenuNightMode {
             get {
@@ -214,7 +421,16 @@ namespace ClientApp.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Thème.
+        ///   Looks up a localized string similar to Change TextBox Colour.
+        /// </summary>
+        internal static string MenuTextBoxColour {
+            get {
+                return ResourceManager.GetString("MenuTextBoxColour", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Theme.
         /// </summary>
         internal static string MenuTheme {
             get {
@@ -223,7 +439,7 @@ namespace ClientApp.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Entrée invalide.
+        ///   Looks up a localized string similar to Invalid input.
         /// </summary>
         internal static string MsgInvalidInput {
             get {
@@ -232,7 +448,7 @@ namespace ClientApp.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Valeur hors limites.
+        ///   Looks up a localized string similar to Value out of range.
         /// </summary>
         internal static string MsgOutOfRange {
             get {
@@ -241,11 +457,20 @@ namespace ClientApp.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Server errorErreur du serveur.
+        ///   Looks up a localized string similar to Server error.
         /// </summary>
         internal static string MsgServerError {
             get {
                 return ResourceManager.GetString("MsgServerError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ready.
+        /// </summary>
+        internal static string StatusReady {
+            get {
+                return ResourceManager.GetString("StatusReady", resourceCulture);
             }
         }
     }

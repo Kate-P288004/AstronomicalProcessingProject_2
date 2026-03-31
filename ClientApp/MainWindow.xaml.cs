@@ -1,412 +1,307 @@
-﻿// ============================================================
-// Developer Name: Kate Odabas
-// Student ID: [Add Your Student ID]
-// Date: [Add Submission Date]
-// Assessment: AT2 - Part B
-// File: MainWindow.xaml.cs
-// Description:
-// WPF client application for the Astronomical Processing System.
-// This file contains:
-// 1. Language switching
-// 2. Theme and UI customisation
-// 3. About dialog
-// 4. Astronomical calculation button logic
-// ============================================================
-
-using System;
+﻿using System;
+using System.Globalization;
+using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using Forms = System.Windows.Forms;
+using ClientApp.Resources;
 
 namespace ClientApp
 {
     public partial class MainWindow : Window
     {
-        // ============================================================
-        // Constructor
-        // ============================================================
+        private Brush _defaultBackground;
+        private Brush _defaultTextForeground;
+        private Brush _defaultButtonBackground;
+        private FontFamily _defaultFontFamily;
+        private double _defaultFontSize;
+
         public MainWindow()
         {
             InitializeComponent();
-            txtStatusBar.Text = "Ready";
+
+            _defaultBackground = MainDock.Background ?? Brushes.White;
+            _defaultTextForeground = Brushes.Black;
+            _defaultButtonBackground = Brushes.LightGray;
+            _defaultFontFamily = this.FontFamily;
+            _defaultFontSize = this.FontSize;
+
+            ApplyResources();
+            ApplyDefaultTheme();
         }
 
-        // ============================================================
-        // Language Switching (Assessment Requirement Q7)
-        // Changes UI text at runtime for English, French and German.
-        // ============================================================
+        private void ApplyResources()
+        {
+            Title = Strings.AppTitle;
+            txtMainTitle.Text = Strings.AppTitle;
+
+            menuLanguage.Header = Strings.MenuLanguage;
+            menuEnglish.Header = Strings.MenuEnglish;
+            menuFrench.Header = Strings.MenuFrench;
+            menuGerman.Header = Strings.MenuGerman;
+
+            menuTheme.Header = Strings.MenuTheme;
+            menuFont.Header = Strings.MenuFont;
+
+            menuCustomise.Header = Strings.MenuCustomise;
+            menuBackgroundColour.Header = Strings.MenuBackgroundColour;
+            menuLabelColour.Header = Strings.MenuLabelColour;
+            menuTextBoxColour.Header = Strings.MenuTextBoxColour;
+            menuAbout.Header = Strings.MenuAbout;
+            menuAboutApp.Header = Strings.MenuAboutApp;
+
+            menuLightTheme.Header = Strings.MenuLightTheme;
+            menuDarkTheme.Header = Strings.MenuDarkTheme;
+            menuBlueTheme.Header = Strings.MenuBlueTheme;
+
+            grpVelocity.Header = Strings.GrpVelocity;
+            grpDistance.Header = Strings.GrpDistance;
+            grpTemperature.Header = Strings.GrpTemperature;
+            grpRadius.Header = Strings.GrpRadius;
+
+            btnVelocity.Content = Strings.BtnCalculateVelocity;
+            btnDistance.Content = Strings.BtnCalculateDistance;
+            btnTemperature.Content = Strings.BtnConvertTemperature;
+            btnRadius.Content = Strings.BtnCalculateHorizon;
+
+            lblObserved.Text = Strings.LblObserved;
+            lblRest.Text = Strings.LblRest;
+            lblVelocity.Text = Strings.LblVelocity;
+            lblParallax.Text = Strings.LblParallax;
+            lblParsecs.Text = Strings.LblParsecs;
+            lblLightYears.Text = Strings.LblLightYears;
+            lblKm.Text = Strings.LblKm;
+            lblCelsius.Text = Strings.LblCelsiusFull;
+            lblKelvin.Text = Strings.LblKelvin;
+            lblMass.Text = Strings.LblMass;
+            lblRadius.Text = Strings.LblRadius;
+
+            txtStatusBar.Text = Strings.StatusReady;
+        }
+
+        private void SetLanguage(string cultureCode)
+        {
+            var culture = new CultureInfo(cultureCode);
+
+            Thread.CurrentThread.CurrentCulture = culture;
+            Thread.CurrentThread.CurrentUICulture = culture;
+            CultureInfo.DefaultThreadCurrentCulture = culture;
+            CultureInfo.DefaultThreadCurrentUICulture = culture;
+        }
+
+        private void RefreshWindow()
+        {
+            MainWindow newWindow = new MainWindow();
+            Application.Current.MainWindow = newWindow;
+            newWindow.Show();
+            Close();
+        }
 
         private void English_Click(object sender, RoutedEventArgs e)
         {
-            Title = "Astronomical Processing System";
-            txtMainTitle.Text = "Astronomical Processing System";
-
-            menuLanguage.Header = "Language";
-            menuEnglish.Header = "English";
-            menuFrench.Header = "French";
-            menuGerman.Header = "German";
-
-            menuTheme.Header = "Theme";
-            menuLightTheme.Header = "Light Theme";
-            menuDarkTheme.Header = "Dark Theme";
-            menuBlueTheme.Header = "Blue Theme";
-
-            menuCustomise.Header = "Customise";
-            menuBackgroundColour.Header = "Change Background Colour";
-            menuLabelColour.Header = "Change Label Colour";
-            menuTextBoxColour.Header = "Change TextBox Colour";
-            menuFont.Header = "Change Font";
-
-            menuAbout.Header = "About";
-            menuAboutApp.Header = "Application Info";
-
-            grpVelocity.Header = "Star Velocity (Doppler Effect)";
-            lblObserved.Text = "Observed Wavelength (nm):";
-            lblRest.Text = "Rest Wavelength (nm):";
-            lblVelocity.Text = "Radial Velocity (m/s):";
-            btnVelocity.Content = "Calculate Velocity";
-
-            grpDistance.Header = "Star Distance (Parallax)";
-            lblParallax.Text = "Parallax Angle (arcsec):";
-            lblParsecs.Text = "Distance (parsecs):";
-            lblLightYears.Text = "Distance (light-years):";
-            lblKm.Text = "Distance (km):";
-            btnDistance.Content = "Calculate Distance";
-
-            grpTemperature.Header = "Temperature Conversion (°C to K)";
-            lblCelsius.Text = "Temperature (°C):";
-            lblKelvin.Text = "Temperature (K):";
-            btnTemperature.Content = "Convert to Kelvin";
-
-            grpRadius.Header = "Black Hole Event Horizon (Schwarzschild Radius)";
-            lblMass.Text = "Black Hole Mass (kg):";
-            lblRadius.Text = "Schwarzschild Radius (m):";
-            btnRadius.Content = "Calculate Radius";
-
-            txtStatusBar.Text = "Language changed to English.";
+            SetLanguage("en");
+            RefreshWindow();
         }
 
         private void French_Click(object sender, RoutedEventArgs e)
         {
-            Title = "Système de traitement astronomique";
-            txtMainTitle.Text = "Système de traitement astronomique";
-
-            menuLanguage.Header = "Langue";
-            menuEnglish.Header = "Anglais";
-            menuFrench.Header = "Français";
-            menuGerman.Header = "Allemand";
-
-            menuTheme.Header = "Thème";
-            menuLightTheme.Header = "Thème Clair";
-            menuDarkTheme.Header = "Thème Sombre";
-            menuBlueTheme.Header = "Thème Bleu";
-
-            menuCustomise.Header = "Personnaliser";
-            menuBackgroundColour.Header = "Changer la couleur du fond";
-            menuLabelColour.Header = "Changer la couleur du texte";
-            menuTextBoxColour.Header = "Changer la couleur des zones de texte";
-            menuFont.Header = "Changer la police";
-
-            menuAbout.Header = "À propos";
-            menuAboutApp.Header = "Information sur l'application";
-
-            grpVelocity.Header = "Vitesse des étoiles (effet Doppler)";
-            lblObserved.Text = "Longueur d'onde observée (nm) :";
-            lblRest.Text = "Longueur d'onde au repos (nm) :";
-            lblVelocity.Text = "Vitesse radiale (m/s) :";
-            btnVelocity.Content = "Calculer la vitesse";
-
-            grpDistance.Header = "Distance des étoiles (parallaxe)";
-            lblParallax.Text = "Angle de parallaxe (arcsec) :";
-            lblParsecs.Text = "Distance (parsecs) :";
-            lblLightYears.Text = "Distance (années-lumière) :";
-            lblKm.Text = "Distance (km) :";
-            btnDistance.Content = "Calculer la distance";
-
-            grpTemperature.Header = "Conversion de température (°C en K)";
-            lblCelsius.Text = "Température (°C) :";
-            lblKelvin.Text = "Température (K) :";
-            btnTemperature.Content = "Convertir en Kelvin";
-
-            grpRadius.Header = "Horizon des événements d'un trou noir";
-            lblMass.Text = "Masse du trou noir (kg) :";
-            lblRadius.Text = "Rayon de Schwarzschild (m) :";
-            btnRadius.Content = "Calculer le rayon";
-
-            txtStatusBar.Text = "Langue changée en français.";
+            SetLanguage("fr-FR");
+            RefreshWindow();
         }
 
         private void German_Click(object sender, RoutedEventArgs e)
         {
-            Title = "Astronomisches Verarbeitungssystem";
-            txtMainTitle.Text = "Astronomisches Verarbeitungssystem";
-
-            menuLanguage.Header = "Sprache";
-            menuEnglish.Header = "Englisch";
-            menuFrench.Header = "Französisch";
-            menuGerman.Header = "Deutsch";
-
-            menuTheme.Header = "Design";
-            menuLightTheme.Header = "Helles Design";
-            menuDarkTheme.Header = "Dunkles Design";
-            menuBlueTheme.Header = "Blaues Design";
-
-            menuCustomise.Header = "Anpassen";
-            menuBackgroundColour.Header = "Hintergrundfarbe ändern";
-            menuLabelColour.Header = "Textfarbe ändern";
-            menuTextBoxColour.Header = "Textfeldfarbe ändern";
-            menuFont.Header = "Schriftart ändern";
-
-            menuAbout.Header = "Info";
-            menuAboutApp.Header = "Anwendungsinfo";
-
-            grpVelocity.Header = "Sternengeschwindigkeit (Doppler-Effekt)";
-            lblObserved.Text = "Beobachtete Wellenlänge (nm):";
-            lblRest.Text = "Ruhewellenlänge (nm):";
-            lblVelocity.Text = "Radialgeschwindigkeit (m/s):";
-            btnVelocity.Content = "Geschwindigkeit berechnen";
-
-            grpDistance.Header = "Sternentfernung (Parallaxe)";
-            lblParallax.Text = "Parallaxenwinkel (Bogensekunden):";
-            lblParsecs.Text = "Entfernung (Parsec):";
-            lblLightYears.Text = "Entfernung (Lichtjahre):";
-            lblKm.Text = "Entfernung (km):";
-            btnDistance.Content = "Entfernung berechnen";
-
-            grpTemperature.Header = "Temperaturumrechnung (°C zu K)";
-            lblCelsius.Text = "Temperatur (°C):";
-            lblKelvin.Text = "Temperatur (K):";
-            btnTemperature.Content = "In Kelvin umrechnen";
-
-            grpRadius.Header = "Ereignishorizont eines Schwarzen Lochs";
-            lblMass.Text = "Masse des Schwarzen Lochs (kg):";
-            lblRadius.Text = "Schwarzschild-Radius (m):";
-            btnRadius.Content = "Radius berechnen";
-
-            txtStatusBar.Text = "Sprache auf Deutsch geändert.";
+            SetLanguage("de-DE");
+            RefreshWindow();
         }
 
-        // ============================================================
-        // Theme Menu Event Handlers
-        // ============================================================
+        private void ApplyDefaultTheme()
+        {
+            MainDock.Background = Brushes.White;
+            MainMenu.Background = Brushes.WhiteSmoke;
+            MainStatusBar.Background = Brushes.WhiteSmoke;
+            txtMainTitle.Foreground = Brushes.Black;
+
+            ApplyLabelColour(Brushes.Black);
+            ApplyButtonBackground(Brushes.LightGray);
+            ApplyTextBoxBackground(Brushes.White);
+
+            FontFamily = _defaultFontFamily;
+            FontSize = 13;
+        }
+
+        private void ApplyDarkTheme()
+        {
+            MainDock.Background = new SolidColorBrush(Color.FromRgb(34, 34, 34));
+            MainMenu.Background = new SolidColorBrush(Color.FromRgb(45, 45, 45));
+            MainStatusBar.Background = new SolidColorBrush(Color.FromRgb(45, 45, 45));
+            txtMainTitle.Foreground = Brushes.White;
+
+            ApplyLabelColour(Brushes.White);
+            ApplyButtonBackground(new SolidColorBrush(Color.FromRgb(70, 70, 70)));
+            ApplyTextBoxBackground(new SolidColorBrush(Color.FromRgb(55, 55, 55)));
+        }
+
+        private void ApplyBlueTheme()
+        {
+            MainDock.Background = new SolidColorBrush(Color.FromRgb(230, 240, 255));
+            MainMenu.Background = new SolidColorBrush(Color.FromRgb(200, 220, 245));
+            MainStatusBar.Background = new SolidColorBrush(Color.FromRgb(200, 220, 245));
+            txtMainTitle.Foreground = Brushes.DarkBlue;
+
+            ApplyLabelColour(Brushes.DarkBlue);
+            ApplyButtonBackground(new SolidColorBrush(Color.FromRgb(173, 216, 230)));
+            ApplyTextBoxBackground(Brushes.White);
+        }
+
+        private void ApplyLabelColour(Brush colour)
+        {
+            lblObserved.Foreground = colour;
+            lblRest.Foreground = colour;
+            lblVelocity.Foreground = colour;
+            lblParallax.Foreground = colour;
+            lblParsecs.Foreground = colour;
+            lblLightYears.Foreground = colour;
+            lblKm.Foreground = colour;
+            lblCelsius.Foreground = colour;
+            lblKelvin.Foreground = colour;
+            lblMass.Foreground = colour;
+            lblRadius.Foreground = colour;
+
+            grpVelocity.Foreground = colour;
+            grpDistance.Foreground = colour;
+            grpTemperature.Foreground = colour;
+            grpRadius.Foreground = colour;
+
+            txtStatusBar.Foreground = colour;
+        }
+
+        private void ApplyButtonBackground(Brush colour)
+        {
+            btnVelocity.Background = colour;
+            btnDistance.Background = colour;
+            btnTemperature.Background = colour;
+            btnRadius.Background = colour;
+        }
+
+        private void ApplyTextBoxBackground(Brush colour)
+        {
+            txtObserved.Background = colour;
+            txtRest.Background = colour;
+            txtVelocity.Background = colour;
+            txtParallax.Background = colour;
+            txtParsecs.Background = colour;
+            txtLightYears.Background = colour;
+            txtKm.Background = colour;
+            txtCelsius.Background = colour;
+            txtKelvin.Background = colour;
+            txtMass.Background = colour;
+            txtRadius.Background = colour;
+        }
 
         private void LightTheme_Click(object sender, RoutedEventArgs e)
         {
-            Background = Brushes.White;
-            txtStatusBar.Text = "Light theme applied.";
+            ApplyDefaultTheme();
+            txtStatusBar.Text = "Light theme applied";
         }
 
         private void DarkTheme_Click(object sender, RoutedEventArgs e)
         {
-            Background = new SolidColorBrush(Color.FromRgb(45, 45, 48));
-            txtStatusBar.Text = "Dark theme applied.";
+            ApplyDarkTheme();
+            txtStatusBar.Text = "Dark theme applied";
         }
 
         private void BlueTheme_Click(object sender, RoutedEventArgs e)
         {
-            Background = new SolidColorBrush(Color.FromRgb(225, 235, 250));
-            txtStatusBar.Text = "Blue theme applied.";
+            ApplyBlueTheme();
+            txtStatusBar.Text = "Blue theme applied";
         }
-
-        // ============================================================
-        // UI Customisation Features
-        // ============================================================
 
         private void BackgroundColour_Click(object sender, RoutedEventArgs e)
         {
-            var dialog = new System.Windows.Forms.ColorDialog();
+            var dialog = new Forms.ColorDialog();
 
-            if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            if (dialog.ShowDialog() == Forms.DialogResult.OK)
             {
-                Background = new SolidColorBrush(
-                    Color.FromRgb(dialog.Color.R, dialog.Color.G, dialog.Color.B)
-                );
-
-                txtStatusBar.Text = "Background colour changed.";
+                Color c = Color.FromArgb(dialog.Color.A, dialog.Color.R, dialog.Color.G, dialog.Color.B);
+                MainDock.Background = new SolidColorBrush(c);
+                txtStatusBar.Text = "Background colour updated";
             }
         }
 
         private void LabelColour_Click(object sender, RoutedEventArgs e)
         {
-            var dialog = new System.Windows.Forms.ColorDialog();
+            var dialog = new Forms.ColorDialog();
 
-            if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            if (dialog.ShowDialog() == Forms.DialogResult.OK)
             {
-                var brush = new SolidColorBrush(
-                    Color.FromRgb(dialog.Color.R, dialog.Color.G, dialog.Color.B)
-                );
-
-                ApplyToVisualTree(this, control =>
-                {
-                    if (control is TextBlock textBlock)
-                    {
-                        textBlock.Foreground = brush;
-                    }
-                    else if (control is Label label)
-                    {
-                        label.Foreground = brush;
-                    }
-                    else if (control is GroupBox groupBox)
-                    {
-                        groupBox.Foreground = brush;
-                    }
-                });
-
-                txtStatusBar.Text = "Label colour changed.";
+                Color c = Color.FromArgb(dialog.Color.A, dialog.Color.R, dialog.Color.G, dialog.Color.B);
+                ApplyLabelColour(new SolidColorBrush(c));
+                txtStatusBar.Text = "Label colour updated";
             }
         }
 
         private void TextBoxColour_Click(object sender, RoutedEventArgs e)
         {
-            var dialog = new System.Windows.Forms.ColorDialog();
+            var dialog = new Forms.ColorDialog();
 
-            if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            if (dialog.ShowDialog() == Forms.DialogResult.OK)
             {
-                var brush = new SolidColorBrush(
-                    Color.FromRgb(dialog.Color.R, dialog.Color.G, dialog.Color.B)
-                );
-
-                ApplyToVisualTree(this, control =>
-                {
-                    if (control is TextBox textBox)
-                    {
-                        textBox.Background = brush;
-                    }
-                });
-
-                txtStatusBar.Text = "TextBox colour changed.";
+                Color c = Color.FromArgb(dialog.Color.A, dialog.Color.R, dialog.Color.G, dialog.Color.B);
+                ApplyTextBoxBackground(new SolidColorBrush(c));
+                txtStatusBar.Text = "TextBox colour updated";
             }
         }
 
         private void Font_Click(object sender, RoutedEventArgs e)
         {
-            var dialog = new System.Windows.Forms.FontDialog();
+            var dialog = new Forms.FontDialog();
 
-            if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            if (dialog.ShowDialog() == Forms.DialogResult.OK)
             {
-                var fontFamily = new FontFamily(dialog.Font.Name);
-                double fontSize = dialog.Font.Size;
-
-                ApplyToVisualTree(this, control =>
-                {
-                    if (control is TextBlock textBlock)
-                    {
-                        textBlock.FontFamily = fontFamily;
-                        textBlock.FontSize = fontSize;
-                    }
-                    else if (control is Label label)
-                    {
-                        label.FontFamily = fontFamily;
-                        label.FontSize = fontSize;
-                    }
-                    else if (control is GroupBox groupBox)
-                    {
-                        groupBox.FontFamily = fontFamily;
-                        groupBox.FontSize = fontSize;
-                    }
-                    else if (control is TextBox textBox)
-                    {
-                        textBox.FontFamily = fontFamily;
-                        textBox.FontSize = fontSize;
-                    }
-                    else if (control is Button button)
-                    {
-                        button.FontFamily = fontFamily;
-                        button.FontSize = fontSize;
-                    }
-                    else if (control is MenuItem menuItem)
-                    {
-                        menuItem.FontFamily = fontFamily;
-                        menuItem.FontSize = fontSize;
-                    }
-                });
-
-                txtStatusBar.Text = "Font changed.";
+                FontFamily = new FontFamily(dialog.Font.Name);
+                FontSize = dialog.Font.Size;
+                txtStatusBar.Text = "Font updated";
             }
         }
-
-        // ============================================================
-        // Helper Method
-        // ============================================================
-
-        private void ApplyToVisualTree(DependencyObject parent, Action<object> action)
-        {
-            if (parent == null || action == null)
-                return;
-
-            int count = VisualTreeHelper.GetChildrenCount(parent);
-
-            for (int i = 0; i < count; i++)
-            {
-                DependencyObject child = VisualTreeHelper.GetChild(parent, i);
-
-                try
-                {
-                    action(child);
-                }
-                catch
-                {
-                }
-
-                ApplyToVisualTree(child, action);
-            }
-        }
-
-        // ============================================================
-        // About Menu
-        // ============================================================
 
         private void About_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show(
-                "Astronomical Processing System\nClient Application for astronomical calculations.",
-                "About",
+                "Astronomical Processing System\nClient Application\nSupports language switching and UI customisation.",
+                "Application Info",
                 MessageBoxButton.OK,
-                MessageBoxImage.Information
-            );
+                MessageBoxImage.Information);
         }
-
-        // ============================================================
-        // Star Velocity Calculation
-        // ============================================================
 
         private void BtnVelocity_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                if (!double.TryParse(txtObserved.Text, out double observed))
+                if (!double.TryParse(txtObserved.Text, out double observed) ||
+                    !double.TryParse(txtRest.Text, out double rest))
                 {
-                    MessageBox.Show("Invalid Observed Wavelength");
-                    return;
-                }
-
-                if (!double.TryParse(txtRest.Text, out double rest))
-                {
-                    MessageBox.Show("Invalid Rest Wavelength");
+                    MessageBox.Show(Strings.MsgInvalidInput);
                     return;
                 }
 
                 if (rest == 0)
                 {
-                    MessageBox.Show("Rest Wavelength cannot be zero");
+                    MessageBox.Show(Strings.MsgOutOfRange);
                     return;
                 }
 
-                double c = 299792458;
-                double velocity = ((observed - rest) / rest) * c;
-
-                txtVelocity.Text = velocity.ToString("0.000E+00");
-                txtStatusBar.Text = "Velocity calculated successfully.";
+                const double speedOfLight = 299792458.0;
+                double velocity = ((observed - rest) / rest) * speedOfLight;
+                txtVelocity.Text = velocity.ToString("E6");
+                txtStatusBar.Text = "Velocity calculated";
             }
-            catch (Exception ex)
+            catch
             {
-                MessageBox.Show("Error: " + ex.Message);
+                MessageBox.Show(Strings.MsgServerError);
             }
         }
-
-        // ============================================================
-        // Star Distance Calculation
-        // ============================================================
 
         private void BtnDistance_Click(object sender, RoutedEventArgs e)
         {
@@ -414,34 +309,30 @@ namespace ClientApp
             {
                 if (!double.TryParse(txtParallax.Text, out double parallax))
                 {
-                    MessageBox.Show("Invalid Parallax Angle");
+                    MessageBox.Show(Strings.MsgInvalidInput);
                     return;
                 }
 
                 if (parallax <= 0)
                 {
-                    MessageBox.Show("Parallax must be greater than zero");
+                    MessageBox.Show(Strings.MsgOutOfRange);
                     return;
                 }
 
-                double parsecs = 1 / parallax;
+                double parsecs = 1.0 / parallax;
                 double lightYears = parsecs * 3.26156;
-                double km = parsecs * 3.0857e13;
+                double kilometres = parsecs * 3.0857E13;
 
-                txtParsecs.Text = parsecs.ToString("0.000E+00");
-                txtLightYears.Text = lightYears.ToString("0.000E+00");
-                txtKm.Text = km.ToString("0.000E+00");
-                txtStatusBar.Text = "Distance calculated successfully.";
+                txtParsecs.Text = parsecs.ToString("E6");
+                txtLightYears.Text = lightYears.ToString("E6");
+                txtKm.Text = kilometres.ToString("E6");
+                txtStatusBar.Text = "Distance calculated";
             }
-            catch (Exception ex)
+            catch
             {
-                MessageBox.Show("Error: " + ex.Message);
+                MessageBox.Show(Strings.MsgServerError);
             }
         }
-
-        // ============================================================
-        // Temperature Conversion
-        // ============================================================
 
         private void BtnTemp_Click(object sender, RoutedEventArgs e)
         {
@@ -449,30 +340,25 @@ namespace ClientApp
             {
                 if (!double.TryParse(txtCelsius.Text, out double celsius))
                 {
-                    MessageBox.Show("Invalid Temperature");
+                    MessageBox.Show(Strings.MsgInvalidInput);
                     return;
                 }
 
                 if (celsius < -273.15)
                 {
-                    MessageBox.Show("Temperature cannot be below -273.15°C");
+                    MessageBox.Show(Strings.MsgOutOfRange);
                     return;
                 }
 
                 double kelvin = celsius + 273.15;
-
-                txtKelvin.Text = kelvin.ToString("0.000E+00");
-                txtStatusBar.Text = "Temperature converted successfully.";
+                txtKelvin.Text = kelvin.ToString("E6");
+                txtStatusBar.Text = "Temperature converted";
             }
-            catch (Exception ex)
+            catch
             {
-                MessageBox.Show("Error: " + ex.Message);
+                MessageBox.Show(Strings.MsgServerError);
             }
         }
-
-        // ============================================================
-        // Black Hole Event Horizon Calculation
-        // ============================================================
 
         private void BtnRadius_Click(object sender, RoutedEventArgs e)
         {
@@ -480,26 +366,26 @@ namespace ClientApp
             {
                 if (!double.TryParse(txtMass.Text, out double mass))
                 {
-                    MessageBox.Show("Invalid Mass");
+                    MessageBox.Show(Strings.MsgInvalidInput);
                     return;
                 }
 
                 if (mass <= 0)
                 {
-                    MessageBox.Show("Mass must be greater than zero");
+                    MessageBox.Show(Strings.MsgOutOfRange);
                     return;
                 }
 
-                double G = 6.674e-11;
-                double c = 299792458;
-                double radius = (2 * G * mass) / (c * c);
+                const double G = 6.674E-11;
+                const double C = 299792458.0;
 
-                txtRadius.Text = radius.ToString("0.000E+00");
-                txtStatusBar.Text = "Radius calculated successfully.";
+                double radius = (2 * G * mass) / (C * C);
+                txtRadius.Text = radius.ToString("E6");
+                txtStatusBar.Text = "Radius calculated";
             }
-            catch (Exception ex)
+            catch
             {
-                MessageBox.Show("Error: " + ex.Message);
+                MessageBox.Show(Strings.MsgServerError);
             }
         }
     }
