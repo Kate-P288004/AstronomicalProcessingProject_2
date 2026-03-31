@@ -1,9 +1,18 @@
 ﻿// ============================================================
 // Developer Name: Kate Odabas
-// Student ID: P288004
+// Student ID: [Add Your Student ID]
+// Date: [Add Submission Date]
+// Assessment: AT2 - Part B
+// File: MainWindow.xaml.cs
+// Description:
+// WPF client application for the Astronomical Processing System.
+// This file contains:
+// 1. Language switching
+// 2. Theme and UI customisation
+// 3. About dialog
+// 4. Astronomical calculation button logic
 // ============================================================
 
-using AstroProto;
 using System;
 using System.Windows;
 using System.Windows.Controls;
@@ -15,73 +24,194 @@ namespace ClientApp
     {
         // ============================================================
         // Constructor
-        // Initializes the WPF client window and all UI components.
         // ============================================================
         public MainWindow()
         {
             InitializeComponent();
+            txtStatusBar.Text = "Ready";
         }
 
         // ============================================================
-        // Language Menu Event Handlers
-        // Assessment Requirement Q7:
-        // Provide menu/button options to change language and layout.
-        // These methods are currently placeholders and can be extended
-        // later to switch labels, buttons and menu text between
-        // English, French and German.
+        // Language Switching (Assessment Requirement Q7)
+        // Changes UI text at runtime for English, French and German.
         // ============================================================
 
         private void English_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("English language selected.");
+            Title = "Astronomical Processing System";
+            txtMainTitle.Text = "Astronomical Processing System";
+
+            menuLanguage.Header = "Language";
+            menuEnglish.Header = "English";
+            menuFrench.Header = "French";
+            menuGerman.Header = "German";
+
+            menuTheme.Header = "Theme";
+            menuLightTheme.Header = "Light Theme";
+            menuDarkTheme.Header = "Dark Theme";
+            menuBlueTheme.Header = "Blue Theme";
+
+            menuCustomise.Header = "Customise";
+            menuBackgroundColour.Header = "Change Background Colour";
+            menuLabelColour.Header = "Change Label Colour";
+            menuTextBoxColour.Header = "Change TextBox Colour";
+            menuFont.Header = "Change Font";
+
+            menuAbout.Header = "About";
+            menuAboutApp.Header = "Application Info";
+
+            grpVelocity.Header = "Star Velocity (Doppler Effect)";
+            lblObserved.Text = "Observed Wavelength (nm):";
+            lblRest.Text = "Rest Wavelength (nm):";
+            lblVelocity.Text = "Radial Velocity (m/s):";
+            btnVelocity.Content = "Calculate Velocity";
+
+            grpDistance.Header = "Star Distance (Parallax)";
+            lblParallax.Text = "Parallax Angle (arcsec):";
+            lblParsecs.Text = "Distance (parsecs):";
+            lblLightYears.Text = "Distance (light-years):";
+            lblKm.Text = "Distance (km):";
+            btnDistance.Content = "Calculate Distance";
+
+            grpTemperature.Header = "Temperature Conversion (°C to K)";
+            lblCelsius.Text = "Temperature (°C):";
+            lblKelvin.Text = "Temperature (K):";
+            btnTemperature.Content = "Convert to Kelvin";
+
+            grpRadius.Header = "Black Hole Event Horizon (Schwarzschild Radius)";
+            lblMass.Text = "Black Hole Mass (kg):";
+            lblRadius.Text = "Schwarzschild Radius (m):";
+            btnRadius.Content = "Calculate Radius";
+
+            txtStatusBar.Text = "Language changed to English.";
         }
 
         private void French_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("French language selected.");
+            Title = "Système de traitement astronomique";
+            txtMainTitle.Text = "Système de traitement astronomique";
+
+            menuLanguage.Header = "Langue";
+            menuEnglish.Header = "Anglais";
+            menuFrench.Header = "Français";
+            menuGerman.Header = "Allemand";
+
+            menuTheme.Header = "Thème";
+            menuLightTheme.Header = "Thème Clair";
+            menuDarkTheme.Header = "Thème Sombre";
+            menuBlueTheme.Header = "Thème Bleu";
+
+            menuCustomise.Header = "Personnaliser";
+            menuBackgroundColour.Header = "Changer la couleur du fond";
+            menuLabelColour.Header = "Changer la couleur du texte";
+            menuTextBoxColour.Header = "Changer la couleur des zones de texte";
+            menuFont.Header = "Changer la police";
+
+            menuAbout.Header = "À propos";
+            menuAboutApp.Header = "Information sur l'application";
+
+            grpVelocity.Header = "Vitesse des étoiles (effet Doppler)";
+            lblObserved.Text = "Longueur d'onde observée (nm) :";
+            lblRest.Text = "Longueur d'onde au repos (nm) :";
+            lblVelocity.Text = "Vitesse radiale (m/s) :";
+            btnVelocity.Content = "Calculer la vitesse";
+
+            grpDistance.Header = "Distance des étoiles (parallaxe)";
+            lblParallax.Text = "Angle de parallaxe (arcsec) :";
+            lblParsecs.Text = "Distance (parsecs) :";
+            lblLightYears.Text = "Distance (années-lumière) :";
+            lblKm.Text = "Distance (km) :";
+            btnDistance.Content = "Calculer la distance";
+
+            grpTemperature.Header = "Conversion de température (°C en K)";
+            lblCelsius.Text = "Température (°C) :";
+            lblKelvin.Text = "Température (K) :";
+            btnTemperature.Content = "Convertir en Kelvin";
+
+            grpRadius.Header = "Horizon des événements d'un trou noir";
+            lblMass.Text = "Masse du trou noir (kg) :";
+            lblRadius.Text = "Rayon de Schwarzschild (m) :";
+            btnRadius.Content = "Calculer le rayon";
+
+            txtStatusBar.Text = "Langue changée en français.";
         }
 
         private void German_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("German language selected.");
+            Title = "Astronomisches Verarbeitungssystem";
+            txtMainTitle.Text = "Astronomisches Verarbeitungssystem";
+
+            menuLanguage.Header = "Sprache";
+            menuEnglish.Header = "Englisch";
+            menuFrench.Header = "Französisch";
+            menuGerman.Header = "Deutsch";
+
+            menuTheme.Header = "Design";
+            menuLightTheme.Header = "Helles Design";
+            menuDarkTheme.Header = "Dunkles Design";
+            menuBlueTheme.Header = "Blaues Design";
+
+            menuCustomise.Header = "Anpassen";
+            menuBackgroundColour.Header = "Hintergrundfarbe ändern";
+            menuLabelColour.Header = "Textfarbe ändern";
+            menuTextBoxColour.Header = "Textfeldfarbe ändern";
+            menuFont.Header = "Schriftart ändern";
+
+            menuAbout.Header = "Info";
+            menuAboutApp.Header = "Anwendungsinfo";
+
+            grpVelocity.Header = "Sternengeschwindigkeit (Doppler-Effekt)";
+            lblObserved.Text = "Beobachtete Wellenlänge (nm):";
+            lblRest.Text = "Ruhewellenlänge (nm):";
+            lblVelocity.Text = "Radialgeschwindigkeit (m/s):";
+            btnVelocity.Content = "Geschwindigkeit berechnen";
+
+            grpDistance.Header = "Sternentfernung (Parallaxe)";
+            lblParallax.Text = "Parallaxenwinkel (Bogensekunden):";
+            lblParsecs.Text = "Entfernung (Parsec):";
+            lblLightYears.Text = "Entfernung (Lichtjahre):";
+            lblKm.Text = "Entfernung (km):";
+            btnDistance.Content = "Entfernung berechnen";
+
+            grpTemperature.Header = "Temperaturumrechnung (°C zu K)";
+            lblCelsius.Text = "Temperatur (°C):";
+            lblKelvin.Text = "Temperatur (K):";
+            btnTemperature.Content = "In Kelvin umrechnen";
+
+            grpRadius.Header = "Ereignishorizont eines Schwarzen Lochs";
+            lblMass.Text = "Masse des Schwarzen Lochs (kg):";
+            lblRadius.Text = "Schwarzschild-Radius (m):";
+            btnRadius.Content = "Radius berechnen";
+
+            txtStatusBar.Text = "Sprache auf Deutsch geändert.";
         }
 
         // ============================================================
         // Theme Menu Event Handlers
-        // Assessment Requirement Q7:
-        // Provide menu/button options to change form style, colours
-        // and visual appearance.
-        // These methods are placeholders and can be extended later.
         // ============================================================
 
         private void LightTheme_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Light theme selected.");
+            Background = Brushes.White;
+            txtStatusBar.Text = "Light theme applied.";
         }
 
         private void DarkTheme_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Dark theme selected.");
+            Background = new SolidColorBrush(Color.FromRgb(45, 45, 48));
+            txtStatusBar.Text = "Dark theme applied.";
         }
 
         private void BlueTheme_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Blue theme selected.");
+            Background = new SolidColorBrush(Color.FromRgb(225, 235, 250));
+            txtStatusBar.Text = "Blue theme applied.";
         }
 
         // ============================================================
         // UI Customisation Features
-        // Assessment Requirement Q7:
-        // Allows the user to customise the client application by
-        // changing the background colour, label colour, textbox colour
-        // and font settings at runtime.
         // ============================================================
 
-        // ============================================================
-        // Background Colour
-        // Opens a colour dialog and applies the selected colour to the
-        // main WPF window background.
-        // ============================================================
         private void BackgroundColour_Click(object sender, RoutedEventArgs e)
         {
             var dialog = new System.Windows.Forms.ColorDialog();
@@ -89,20 +219,13 @@ namespace ClientApp
             if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 Background = new SolidColorBrush(
-                    Color.FromRgb(
-                        dialog.Color.R,
-                        dialog.Color.G,
-                        dialog.Color.B
-                    )
+                    Color.FromRgb(dialog.Color.R, dialog.Color.G, dialog.Color.B)
                 );
+
+                txtStatusBar.Text = "Background colour changed.";
             }
         }
 
-        // ============================================================
-        // Label Colour
-        // Opens a colour dialog and applies the selected colour to all
-        // TextBlock, Label and GroupBox controls in the form.
-        // ============================================================
         private void LabelColour_Click(object sender, RoutedEventArgs e)
         {
             var dialog = new System.Windows.Forms.ColorDialog();
@@ -110,11 +233,7 @@ namespace ClientApp
             if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 var brush = new SolidColorBrush(
-                    Color.FromRgb(
-                        dialog.Color.R,
-                        dialog.Color.G,
-                        dialog.Color.B
-                    )
+                    Color.FromRgb(dialog.Color.R, dialog.Color.G, dialog.Color.B)
                 );
 
                 ApplyToVisualTree(this, control =>
@@ -132,14 +251,11 @@ namespace ClientApp
                         groupBox.Foreground = brush;
                     }
                 });
+
+                txtStatusBar.Text = "Label colour changed.";
             }
         }
 
-        // ============================================================
-        // TextBox Colour
-        // Opens a colour dialog and applies the selected background
-        // colour to all TextBox controls in the form.
-        // ============================================================
         private void TextBoxColour_Click(object sender, RoutedEventArgs e)
         {
             var dialog = new System.Windows.Forms.ColorDialog();
@@ -147,11 +263,7 @@ namespace ClientApp
             if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 var brush = new SolidColorBrush(
-                    Color.FromRgb(
-                        dialog.Color.R,
-                        dialog.Color.G,
-                        dialog.Color.B
-                    )
+                    Color.FromRgb(dialog.Color.R, dialog.Color.G, dialog.Color.B)
                 );
 
                 ApplyToVisualTree(this, control =>
@@ -161,14 +273,11 @@ namespace ClientApp
                         textBox.Background = brush;
                     }
                 });
+
+                txtStatusBar.Text = "TextBox colour changed.";
             }
         }
 
-        // ============================================================
-        // Font Selection
-        // Opens a font dialog and applies the selected font family and
-        // font size to text-based UI controls.
-        // ============================================================
         private void Font_Click(object sender, RoutedEventArgs e)
         {
             var dialog = new System.Windows.Forms.FontDialog();
@@ -211,15 +320,15 @@ namespace ClientApp
                         menuItem.FontSize = fontSize;
                     }
                 });
+
+                txtStatusBar.Text = "Font changed.";
             }
         }
 
         // ============================================================
         // Helper Method
-        // Traverses all visual elements in the WPF window and applies
-        // the specified action to each child control.
-        // Used for customisation features such as colours and font.
         // ============================================================
+
         private void ApplyToVisualTree(DependencyObject parent, Action<object> action)
         {
             if (parent == null || action == null)
@@ -237,7 +346,6 @@ namespace ClientApp
                 }
                 catch
                 {
-                    // Prevent UI traversal from stopping due to one control error
                 }
 
                 ApplyToVisualTree(child, action);
@@ -246,8 +354,8 @@ namespace ClientApp
 
         // ============================================================
         // About Menu
-        // Displays application information for the user.
         // ============================================================
+
         private void About_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show(
@@ -259,16 +367,9 @@ namespace ClientApp
         }
 
         // ============================================================
-        // Star Velocity Calculation (Doppler Effect)
-        // Assessment Requirement Q7:
-        // Reads observed wavelength and rest wavelength from the UI,
-        // validates input, calculates star velocity and displays the
-        // result in scientific notation.
-        //
-        // Formula:
-        // V = ((Observed Wavelength - Rest Wavelength) / Rest Wavelength) * C
-        // where C = 299792458 m/s
+        // Star Velocity Calculation
         // ============================================================
+
         private void BtnVelocity_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -295,6 +396,7 @@ namespace ClientApp
                 double velocity = ((observed - rest) / rest) * c;
 
                 txtVelocity.Text = velocity.ToString("0.000E+00");
+                txtStatusBar.Text = "Velocity calculated successfully.";
             }
             catch (Exception ex)
             {
@@ -303,15 +405,9 @@ namespace ClientApp
         }
 
         // ============================================================
-        // Star Distance Calculation (Parallax)
-        // Assessment Requirement Q7:
-        // Reads parallax angle from the UI, validates input,
-        // calculates the distance in parsecs and additionally shows
-        // light years and kilometres in scientific notation.
-        //
-        // Formula:
-        // Distance (parsecs) = 1 / parallax
+        // Star Distance Calculation
         // ============================================================
+
         private void BtnDistance_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -335,6 +431,7 @@ namespace ClientApp
                 txtParsecs.Text = parsecs.ToString("0.000E+00");
                 txtLightYears.Text = lightYears.ToString("0.000E+00");
                 txtKm.Text = km.ToString("0.000E+00");
+                txtStatusBar.Text = "Distance calculated successfully.";
             }
             catch (Exception ex)
             {
@@ -343,15 +440,9 @@ namespace ClientApp
         }
 
         // ============================================================
-        // Temperature Conversion (Celsius to Kelvin)
-        // Assessment Requirement Q7:
-        // Reads temperature in Celsius, validates against absolute zero,
-        // converts it to Kelvin and displays the result in scientific
-        // notation.
-        //
-        // Formula:
-        // K = C + 273.15
+        // Temperature Conversion
         // ============================================================
+
         private void BtnTemp_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -371,6 +462,7 @@ namespace ClientApp
                 double kelvin = celsius + 273.15;
 
                 txtKelvin.Text = kelvin.ToString("0.000E+00");
+                txtStatusBar.Text = "Temperature converted successfully.";
             }
             catch (Exception ex)
             {
@@ -380,17 +472,8 @@ namespace ClientApp
 
         // ============================================================
         // Black Hole Event Horizon Calculation
-        // Assessment Requirement Q7:
-        // Reads black hole mass, validates input, calculates the
-        // Schwarzschild radius and displays the result in scientific
-        // notation.
-        //
-        // Formula:
-        // R = (2GM) / c^2
-        // where:
-        // G = 6.674 × 10^-11
-        // c = 299792458 m/s
         // ============================================================
+
         private void BtnRadius_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -412,6 +495,7 @@ namespace ClientApp
                 double radius = (2 * G * mass) / (c * c);
 
                 txtRadius.Text = radius.ToString("0.000E+00");
+                txtStatusBar.Text = "Radius calculated successfully.";
             }
             catch (Exception ex)
             {
