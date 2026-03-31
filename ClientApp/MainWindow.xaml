@@ -79,7 +79,7 @@
                                 Grid.ColumnSpan="2"
                                 Content="Calculate Velocity"
                                 Height="32"
-                                Click="BtnVelocity_Click" Margin="0,0,24,0"/>
+                                Click="BtnVelocity_Click" Margin="0,0,45,0"/>
 
                         <TextBlock x:Name="lblRest" Grid.Row="2" Grid.Column="0" Text="Rest Wavelength (nm):" VerticalAlignment="Center" Margin="0,0,10,0"/>
                         <TextBox x:Name="txtRest" Grid.Row="2" Grid.Column="1" Height="28"/>
@@ -116,7 +116,7 @@
                                 Grid.ColumnSpan="2"
                                 Content="Calculate Distance"
                                 Height="32"
-                                Click="BtnDistance_Click" Margin="0,0,22,0"/>
+                                Click="BtnDistance_Click" Margin="0,0,42,0"/>
 
                         <TextBlock x:Name="lblParsecs" Grid.Row="2" Grid.Column="3" Text="Distance (parsecs):" VerticalAlignment="Center" Margin="0,0,10,0"/>
                         <TextBox x:Name="txtParsecs" Grid.Row="2" Grid.Column="4" Height="28" IsReadOnly="True" Margin="0,0,68,0"/>
@@ -154,7 +154,7 @@
                                 Grid.ColumnSpan="2"
                                 Content="Convert to Kelvin"
                                 Height="32"
-                                Click="BtnTemp_Click" Margin="0,0,21,0"/>
+                                Click="BtnTemp_Click" Margin="0,2,43,10" Grid.RowSpan="2"/>
 
                         <TextBlock x:Name="lblKelvin" Grid.Row="2" Grid.Column="3" Text="Temperature (K):" VerticalAlignment="Center" Margin="0,0,10,0"/>
                         <TextBox x:Name="txtKelvin" Grid.Row="2" Grid.Column="4" Height="28" IsReadOnly="True" Margin="0,0,65,0"/>
@@ -186,7 +186,7 @@
                                 Grid.ColumnSpan="2"
                                 Content="Calculate Radius"
                                 Height="32"
-                                Click="BtnRadius_Click" Margin="0,0,20,0"/>
+                                Click="BtnRadius_Click" Margin="0,0,39,0"/>
 
                         <TextBlock x:Name="lblRadius" Grid.Row="2" Grid.Column="3" Text="Schwarzschild Radius (m):" VerticalAlignment="Center" Margin="0,0,10,0"/>
                         <TextBox x:Name="txtRadius" Grid.Row="2" Grid.Column="4" Height="28" IsReadOnly="True" Margin="0,0,64,0"/>
