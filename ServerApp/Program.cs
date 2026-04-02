@@ -1,39 +1,27 @@
-﻿using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
+﻿using Microsoft.AspNetCore.Server.Kestrel.Core;
 using ServerApp.Services;
 
-// ============================================================
-// Create WebApplication Builder
-// Configures services required for the server
-// ============================================================
 var builder = WebApplication.CreateBuilder(args);
 
-// ============================================================
-// Register gRPC services
-// Enables communication between client and server
-// ============================================================
+// Add gRPC
 builder.Services.AddGrpc();
 
-// ============================================================
-// Build the application
-// ============================================================
+// Configure Kestrel to listen on localhost:5000 with HTTP/2
+builder.WebHost.ConfigureKestrel(options =>
+{
+    options.ListenLocalhost(5000, listenOptions =>
+    {
+        listenOptions.Protocols = HttpProtocols.Http2;
+    });
+});
+
 var app = builder.Build();
 
-// ============================================================
-// Map gRPC Service
-// Links AstroService implementation to incoming client requests
-// ============================================================
+// Map gRPC service
 app.MapGrpcService<AstroServiceImpl>();
 
-// ============================================================
-// Default endpoint
-// Used for testing if server is running in browser
-// ============================================================
-app.MapGet("/", () => "Astronomical Processing Server is running...");
+// Optional root message
+app.MapGet("/", () => "Astro gRPC server is running");
 
-// ============================================================
-// Run server
-// Starts listening for client connections
-// ============================================================
+// Run app
 app.Run();
