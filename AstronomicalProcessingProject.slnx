@@ -1,6 +1,6 @@
 <Solution>
   <Folder Name="/proto/">
-    <File Path="astro.proto" />
+    <File Path="proto/astro.proto" />
   </Folder>
   <Project Path="AstroMathDLL/AstroMathDLL.csproj" />
   <Project Path="ClientApp/ClientApp.csproj" />
