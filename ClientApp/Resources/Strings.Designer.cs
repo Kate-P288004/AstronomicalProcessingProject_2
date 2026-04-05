@@ -61,6 +61,24 @@ namespace ClientApp.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Astronomical Processing System\nClient Application\nSupports language switching and UI customisation..
+        /// </summary>
+        internal static string AboutMessage {
+            get {
+                return ResourceManager.GetString("AboutMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Application Info.
+        /// </summary>
+        internal static string AboutTitle {
+            get {
+                return ResourceManager.GetString("AboutTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Astronomical Processing System.
         /// </summary>
         internal static string AppTitle {
@@ -439,11 +457,83 @@ namespace ClientApp.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Temperature is below absolute zero (-273.15°C). Please enter a value of -273.15 or higher..
+        /// </summary>
+        internal static string MsgCelsiusRange {
+            get {
+                return ResourceManager.GetString("MsgCelsiusRange", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Input Error.
+        /// </summary>
+        internal static string MsgInputError {
+            get {
+                return ResourceManager.GetString("MsgInputError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid temperature. Please enter a numeric value in Celsius .
+        /// </summary>
+        internal static string MsgInvalidCelsius {
+            get {
+                return ResourceManager.GetString("MsgInvalidCelsius", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invalid input.
         /// </summary>
         internal static string MsgInvalidInput {
             get {
                 return ResourceManager.GetString("MsgInvalidInput", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid mass. Please enter a numeric value in kilograms.
+        /// </summary>
+        internal static string MsgInvalidMass {
+            get {
+                return ResourceManager.GetString("MsgInvalidMass", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid observed wavelength. Please enter a numeric value.
+        /// </summary>
+        internal static string MsgInvalidObserved {
+            get {
+                return ResourceManager.GetString("MsgInvalidObserved", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid parallax angle. Please enter a numeric value in arcseconds (e.g. 0.75)..
+        /// </summary>
+        internal static string MsgInvalidParallax {
+            get {
+                return ResourceManager.GetString("MsgInvalidParallax", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid rest wavelength. Please enter a numeric value .
+        /// </summary>
+        internal static string MsgInvalidRest {
+            get {
+                return ResourceManager.GetString("MsgInvalidRest", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mass must be greater than zero. A black hole cannot have zero or negative mass..
+        /// </summary>
+        internal static string MsgMassRange {
+            get {
+                return ResourceManager.GetString("MsgMassRange", resourceCulture);
             }
         }
         
@@ -457,11 +547,47 @@ namespace ClientApp.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Out of Range.
+        /// </summary>
+        internal static string MsgOutOfRangeTitle {
+            get {
+                return ResourceManager.GetString("MsgOutOfRangeTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Parallax angle must be greater than zero. A zero or negative angle has no physical meaning..
+        /// </summary>
+        internal static string MsgParallaxRange {
+            get {
+                return ResourceManager.GetString("MsgParallaxRange", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rest wavelength cannot be zero — this would cause division by zero in the Doppler formula..
+        /// </summary>
+        internal static string MsgRestZero {
+            get {
+                return ResourceManager.GetString("MsgRestZero", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Server error.
         /// </summary>
         internal static string MsgServerError {
             get {
                 return ResourceManager.GetString("MsgServerError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Server is not available. Make sure ServerApp is running..
+        /// </summary>
+        internal static string MsgServerUnavailable {
+            get {
+                return ResourceManager.GetString("MsgServerUnavailable", resourceCulture);
             }
         }
         

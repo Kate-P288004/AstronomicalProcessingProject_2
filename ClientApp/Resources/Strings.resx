@@ -1,217 +1,300 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
-	<!-- 
+  <!-- 
     Microsoft ResX Schema 
     
     Version 2.0
-  -->
-	<xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-		<xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
-		<xsd:element name="root" msdata:IsDataSet="true">
-			<xsd:complexType>
-				<xsd:choice maxOccurs="unbounded">
-					<xsd:element name="metadata">
-						<xsd:complexType>
-							<xsd:sequence>
-								<xsd:element name="value" type="xsd:string" minOccurs="0" />
-							</xsd:sequence>
-							<xsd:attribute name="name" use="required" type="xsd:string" />
-							<xsd:attribute name="type" type="xsd:string" />
-							<xsd:attribute name="mimetype" type="xsd:string" />
-							<xsd:attribute ref="xml:space" />
-						</xsd:complexType>
-					</xsd:element>
-					<xsd:element name="assembly">
-						<xsd:complexType>
-							<xsd:attribute name="alias" type="xsd:string" />
-							<xsd:attribute name="name" type="xsd:string" />
-						</xsd:complexType>
-					</xsd:element>
-					<xsd:element name="data">
-						<xsd:complexType>
-							<xsd:sequence>
-								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-								<xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
-							</xsd:sequence>
-							<xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-							<xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-							<xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-							<xsd:attribute ref="xml:space" />
-						</xsd:complexType>
-					</xsd:element>
-					<xsd:element name="resheader">
-						<xsd:complexType>
-							<xsd:sequence>
-								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-							</xsd:sequence>
-							<xsd:attribute name="name" type="xsd:string" use="required" />
-						</xsd:complexType>
-					</xsd:element>
-				</xsd:choice>
-			</xsd:complexType>
-		</xsd:element>
-	</xsd:schema>
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
 
-	<resheader name="resmimetype">
-		<value>text/microsoft-resx</value>
-	</resheader>
-	<resheader name="version">
-		<value>2.0</value>
-	</resheader>
-	<resheader name="reader">
-		<value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-	</resheader>
-	<resheader name="writer">
-		<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-	</resheader>
-
-	<data name="AppTitle" xml:space="preserve">
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AppTitle" xml:space="preserve">
     <value>Astronomical Processing System</value>
   </data>
-
-	<data name="MenuLanguage" xml:space="preserve">
+  <data name="MenuLanguage" xml:space="preserve">
     <value>Language</value>
   </data>
-	<data name="MenuEnglish" xml:space="preserve">
+  <data name="MenuEnglish" xml:space="preserve">
     <value>English</value>
   </data>
-	<data name="MenuFrench" xml:space="preserve">
+  <data name="MenuFrench" xml:space="preserve">
     <value>French</value>
   </data>
-	<data name="MenuGerman" xml:space="preserve">
+  <data name="MenuGerman" xml:space="preserve">
     <value>German</value>
   </data>
-
-	<data name="MenuTheme" xml:space="preserve">
+  <data name="MenuTheme" xml:space="preserve">
     <value>Theme</value>
   </data>
-	<data name="MenuNightMode" xml:space="preserve">
+  <data name="MenuNightMode" xml:space="preserve">
     <value>Night Mode</value>
   </data>
-	<data name="MenuBackgroundColor" xml:space="preserve">
+  <data name="MenuBackgroundColor" xml:space="preserve">
     <value>Background Colour</value>
   </data>
-	<data name="MenuFont" xml:space="preserve">
+  <data name="MenuFont" xml:space="preserve">
     <value>Font</value>
   </data>
-
-	<data name="MenuCustomise" xml:space="preserve">
+  <data name="MenuCustomise" xml:space="preserve">
     <value>Customise</value>
   </data>
-	<data name="MenuBackgroundColour" xml:space="preserve">
+  <data name="MenuBackgroundColour" xml:space="preserve">
     <value>Change Background Colour</value>
   </data>
-	<data name="MenuLabelColour" xml:space="preserve">
+  <data name="MenuLabelColour" xml:space="preserve">
     <value>Change Label Colour</value>
   </data>
-	<data name="MenuTextBoxColour" xml:space="preserve">
+  <data name="MenuTextBoxColour" xml:space="preserve">
     <value>Change TextBox Colour</value>
   </data>
-
-	<data name="MenuAbout" xml:space="preserve">
+  <data name="MenuAbout" xml:space="preserve">
     <value>About</value>
   </data>
-	<data name="MenuAboutApp" xml:space="preserve">
+  <data name="MenuAboutApp" xml:space="preserve">
     <value>Application Info</value>
   </data>
-
-	<data name="MenuLightTheme" xml:space="preserve">
+  <data name="MenuLightTheme" xml:space="preserve">
     <value>Light Theme</value>
   </data>
-	<data name="MenuDarkTheme" xml:space="preserve">
+  <data name="MenuDarkTheme" xml:space="preserve">
     <value>Dark Theme</value>
   </data>
-	<data name="MenuBlueTheme" xml:space="preserve">
+  <data name="MenuBlueTheme" xml:space="preserve">
     <value>Blue Theme</value>
   </data>
-
-	<data name="GrpVelocity" xml:space="preserve">
+  <data name="GrpVelocity" xml:space="preserve">
     <value>Star Velocity (Doppler Effect)</value>
   </data>
-	<data name="GrpDistance" xml:space="preserve">
+  <data name="GrpDistance" xml:space="preserve">
     <value>Star Distance (Parallax)</value>
   </data>
-	<data name="GrpTemperature" xml:space="preserve">
+  <data name="GrpTemperature" xml:space="preserve">
     <value>Temperature Conversion (°C to K)</value>
   </data>
-	<data name="GrpRadius" xml:space="preserve">
+  <data name="GrpRadius" xml:space="preserve">
     <value>Black Hole Event Horizon (Schwarzschild Radius)</value>
   </data>
-
-	<data name="LblStarVelocity" xml:space="preserve">
+  <data name="LblStarVelocity" xml:space="preserve">
     <value>Star Velocity</value>
   </data>
-	<data name="LblStarDistance" xml:space="preserve">
+  <data name="LblStarDistance" xml:space="preserve">
     <value>Star Distance</value>
   </data>
-	<data name="LblTemperatureKelvin" xml:space="preserve">
+  <data name="LblTemperatureKelvin" xml:space="preserve">
     <value>Temperature (Kelvin)</value>
   </data>
-	<data name="LblEventHorizon" xml:space="preserve">
+  <data name="LblEventHorizon" xml:space="preserve">
     <value>Event Horizon</value>
   </data>
-	<data name="LblResult" xml:space="preserve">
+  <data name="LblResult" xml:space="preserve">
     <value>Result</value>
   </data>
-
-	<data name="LblObserved" xml:space="preserve">
+  <data name="LblObserved" xml:space="preserve">
     <value>Observed Wavelength (nm):</value>
   </data>
-	<data name="LblRest" xml:space="preserve">
+  <data name="LblRest" xml:space="preserve">
     <value>Rest Wavelength (nm):</value>
   </data>
-	<data name="LblVelocity" xml:space="preserve">
+  <data name="LblVelocity" xml:space="preserve">
     <value>Radial Velocity (m/s):</value>
   </data>
-	<data name="LblParallax" xml:space="preserve">
+  <data name="LblParallax" xml:space="preserve">
     <value>Parallax Angle (arcsec):</value>
   </data>
-	<data name="LblParsecs" xml:space="preserve">
+  <data name="LblParsecs" xml:space="preserve">
     <value>Distance (parsecs):</value>
   </data>
-	<data name="LblLightYears" xml:space="preserve">
+  <data name="LblLightYears" xml:space="preserve">
     <value>Distance (light-years):</value>
   </data>
-	<data name="LblKm" xml:space="preserve">
+  <data name="LblKm" xml:space="preserve">
     <value>Distance (km):</value>
   </data>
-	<data name="LblCelsiusFull" xml:space="preserve">
+  <data name="LblCelsiusFull" xml:space="preserve">
     <value>Temperature (°C):</value>
   </data>
-	<data name="LblKelvin" xml:space="preserve">
+  <data name="LblKelvin" xml:space="preserve">
     <value>Temperature (K):</value>
   </data>
-	<data name="LblMass" xml:space="preserve">
+  <data name="LblMass" xml:space="preserve">
     <value>Black Hole Mass (kg):</value>
   </data>
-	<data name="LblRadius" xml:space="preserve">
+  <data name="LblRadius" xml:space="preserve">
     <value>Schwarzschild Radius (m):</value>
   </data>
-
-	<data name="BtnCalculateVelocity" xml:space="preserve">
+  <data name="BtnCalculateVelocity" xml:space="preserve">
     <value>Calculate Velocity</value>
   </data>
-	<data name="BtnCalculateDistance" xml:space="preserve">
+  <data name="BtnCalculateDistance" xml:space="preserve">
     <value>Calculate Distance</value>
   </data>
-	<data name="BtnConvertTemperature" xml:space="preserve">
+  <data name="BtnConvertTemperature" xml:space="preserve">
     <value>Convert Temperature</value>
   </data>
-	<data name="BtnCalculateHorizon" xml:space="preserve">
+  <data name="BtnCalculateHorizon" xml:space="preserve">
     <value>Calculate Horizon</value>
   </data>
-
-	<data name="MsgInvalidInput" xml:space="preserve">
+  <data name="MsgInvalidInput" xml:space="preserve">
     <value>Invalid input</value>
   </data>
-	<data name="MsgOutOfRange" xml:space="preserve">
+  <data name="MsgOutOfRange" xml:space="preserve">
     <value>Value out of range</value>
   </data>
-	<data name="MsgServerError" xml:space="preserve">
+  <data name="MsgServerError" xml:space="preserve">
     <value>Server error</value>
   </data>
-
-	<data name="StatusReady" xml:space="preserve">
+  <data name="StatusReady" xml:space="preserve">
     <value>Ready</value>
+  </data>
+  <data name="MsgInvalidObserved" xml:space="preserve">
+    <value>Invalid observed wavelength. Please enter a numeric value</value>
+  </data>
+  <data name="MsgInvalidRest" xml:space="preserve">
+    <value>Invalid rest wavelength. Please enter a numeric value </value>
+  </data>
+  <data name="MsgRestZero" xml:space="preserve">
+    <value>Rest wavelength cannot be zero — this would cause division by zero in the Doppler formula.</value>
+  </data>
+  <data name="MsgInvalidParallax" xml:space="preserve">
+    <value>Invalid parallax angle. Please enter a numeric value in arcseconds (e.g. 0.75).</value>
+  </data>
+  <data name="MsgParallaxRange" xml:space="preserve">
+    <value>Parallax angle must be greater than zero. A zero or negative angle has no physical meaning.</value>
+  </data>
+  <data name="MsgInvalidCelsius" xml:space="preserve">
+    <value>Invalid temperature. Please enter a numeric value in Celsius </value>
+  </data>
+  <data name="MsgCelsiusRange" xml:space="preserve">
+    <value>Temperature is below absolute zero (-273.15°C). Please enter a value of -273.15 or higher.</value>
+  </data>
+  <data name="MsgInvalidMass" xml:space="preserve">
+    <value>Invalid mass. Please enter a numeric value in kilograms</value>
+  </data>
+  <data name="MsgMassRange" xml:space="preserve">
+    <value>Mass must be greater than zero. A black hole cannot have zero or negative mass.</value>
+  </data>
+  <data name="AboutMessage" xml:space="preserve">
+    <value>Astronomical Processing System\nClient Application\nSupports language switching and UI customisation.</value>
+  </data>
+  <data name="AboutTitle" xml:space="preserve">
+    <value>Application Info</value>
+  </data>
+  <data name="MsgServerUnavailable" xml:space="preserve">
+    <value>Server is not available. Make sure ServerApp is running.</value>
+  </data>
+  <data name="MsgOutOfRangeTitle" xml:space="preserve">
+    <value>Out of Range</value>
+  </data>
+  <data name="MsgInputError" xml:space="preserve">
+    <value>Input Error</value>
   </data>
 </root>
