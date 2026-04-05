@@ -38,12 +38,12 @@ jobs:
           --no-restore
           -p:TreatWarningsAsErrors=true
 
-  # ── Job 2: Publish ──────────────────────────────────────────
-
+ # ── Job 2: Publish ──────────────────────────────────────────
+  # Publishes both ClientApp and ServerApp as self-contained
+  # Windows exes so the user never needs .NET or Visual Studio.
   publish:
     name: Publish Release EXE
     runs-on: windows-latest
-    # Only runs if the build job passed
     needs: build
 
     steps:
@@ -55,11 +55,8 @@ jobs:
         with:
           dotnet-version: '10.0.x'
 
-      - name: Restore dependencies
-        run: dotnet restore ClientApp/ClientApp.csproj
-
-      # Publish as a single self-contained exe for Windows 64-bit
-      - name: Publish self-contained EXE
+      # Publish ClientApp as a single self-contained exe
+      - name: Publish ClientApp
         run: >
           dotnet publish ClientApp/ClientApp.csproj
           --configuration Release
@@ -67,24 +64,32 @@ jobs:
           --self-contained true
           -p:PublishSingleFile=true
           -p:IncludeNativeLibrariesForSelfExtract=true
-          --output ./publish
+          --output ./publish/client
 
-      # Upload the exe so it can be downloaded from the Actions tab
+      # Publish ServerApp as a single self-contained exe
+      - name: Publish ServerApp
+        run: >
+          dotnet publish ServerApp/ServerApp.csproj
+          --configuration Release
+          --runtime win-x64
+          --self-contained true
+          -p:PublishSingleFile=true
+          -p:IncludeNativeLibrariesForSelfExtract=true
+          --output ./publish/server
+
+      # Upload both exes as one artifact
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
-          name: ClientApp-Release
+          name: AstronomicalProcessingSystem-Release
           path: ./publish
           retention-days: 30
 
   # ── Job 3: Auto Tag and GitHub Release ─────────────────────
-
   release:
     name: Create GitHub Release
     runs-on: windows-latest
-    # Only runs if the publish job passed
     needs: publish
-    # Write permission needed to create tags and releases
     permissions:
       contents: write
 
@@ -97,10 +102,8 @@ jobs:
         with:
           dotnet-version: '10.0.x'
 
-      - name: Restore dependencies
-        run: dotnet restore ClientApp/ClientApp.csproj
-
-      - name: Publish self-contained EXE
+      # Publish ClientApp for release attachment
+      - name: Publish ClientApp
         run: >
           dotnet publish ClientApp/ClientApp.csproj
           --configuration Release
@@ -108,10 +111,19 @@ jobs:
           --self-contained true
           -p:PublishSingleFile=true
           -p:IncludeNativeLibrariesForSelfExtract=true
-          --output ./publish
+          --output ./publish/client
 
-      # Generate a unique version tag from the GitHub run number
-  
+      # Publish ServerApp for release attachment
+      - name: Publish ServerApp
+        run: >
+          dotnet publish ServerApp/ServerApp.csproj
+          --configuration Release
+          --runtime win-x64
+          --self-contained true
+          -p:PublishSingleFile=true
+          -p:IncludeNativeLibrariesForSelfExtract=true
+          --output ./publish/server
+
       - name: Create version tag
         id: tag
         run: |
@@ -122,7 +134,7 @@ jobs:
           git tag $version
           git push origin $version
 
-      # Create the GitHub Release and attach the exe as a download
+      # Attach both exes to the GitHub Release
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
@@ -130,15 +142,19 @@ jobs:
           name: "Astronomical Processing System ${{ steps.tag.outputs.VERSION }}"
           body: |
             ## Astronomical Processing System
-            **Client Application - Automatic Release**
-
-            ### What's included
-            - Self-contained Windows executable (no .NET install required)
-            - Built from commit: ${{ github.sha }}
+            **Automatic Release — no install required**
 
             ### How to run
-            Download `ClientApp.exe` below and run it directly.
-            Make sure `ServerApp` is running first.
-          files: ./publish/ClientApp.exe
+            1. Download both files below
+            2. Double click `ServerApp.exe` — a console window will open, leave it running
+            3. Double click `ClientApp.exe`
+
+            >  ServerApp.exe must be running before you open ClientApp.exe
+
+            Built from commit: ${{ github.sha }}
+          files: |
+            ./publish/client/ClientApp.exe
+            ./publish/server/ServerApp.exe
           draft: false
           prerelease: false
+  
