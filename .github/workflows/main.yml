@@ -1,0 +1,177 @@
+# ============================================================
+# Project: Astronomical Processing System - Client Application
+# ============================================================
+
+name: Build, Test and Release
+
+on:
+  push:
+    branches: [ main ]
+
+  workflow_dispatch:
+
+jobs:
+
+  # ── Job 1: Strict Build ─────────────────────────────────────
+ 
+  build:
+    name: Strict Build (Warnings as Errors)
+    runs-on: windows-latest
+
+    steps:
+      # Download my repository code onto the build machine
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # Install .NET 10 which matches the version I used to develop the project
+      - name: Setup .NET 10
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+
+      # Restore NuGet packages including gRPC and Grpc.Net.Client
+      - name: Restore dependencies
+        run: dotnet restore ClientApp/ClientApp.csproj
+
+      # Build in Release mode - TreatWarningsAsErrors fails the build
+      # if any compiler warnings are found, not just errors
+      - name: Build (strict)
+        run: >
+          dotnet build ClientApp/ClientApp.csproj
+          --configuration Release
+          --no-restore
+          -p:TreatWarningsAsErrors=true
+
+  # ── Job 2: Unit Tests ───────────────────────────────────────
+  test:
+    name: Run Unit Tests
+    runs-on: windows-latest
+    # This job only starts if Job 1 (build) passed successfully
+    needs: build
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup .NET 10
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+
+      # Restore packages for the test project
+      - name: Restore dependencies
+        run: dotnet restore AstroMathTests/AstroMathTests.csproj
+
+      # Run all unit tests and print results to the console
+      # verbosity normal shows each test name and pass/fail result
+      - name: Run tests
+        run: >
+          dotnet test AstroMathTests/AstroMathTests.csproj
+          --configuration Release
+          --no-restore
+          --verbosity normal
+
+  # ── Job 3: Publish ──────────────────────────────────────────
+
+  publish:
+    name: Publish Release EXE
+    runs-on: windows-latest
+    # This job only starts if Job 2 (tests) passed successfully
+    needs: test
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup .NET 10
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+
+      - name: Restore dependencies
+        run: dotnet restore ClientApp/ClientApp.csproj
+
+      # Publish as a single self-contained exe for Windows 64-bit
+      # PublishSingleFile bundles everything into one file
+      # IncludeNativeLibrariesForSelfExtract includes native dependencies
+      - name: Publish self-contained EXE
+        run: >
+          dotnet publish ClientApp/ClientApp.csproj
+          --configuration Release
+          --runtime win-x64
+          --self-contained true
+          -p:PublishSingleFile=true
+          -p:IncludeNativeLibrariesForSelfExtract=true
+          --output ./publish
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ClientApp-Release
+          path: ./publish
+          retention-days: 30
+
+  # ── Job 4: Auto Tag and GitHub Release ─────────────────────
+
+  release:
+    name: Create GitHub Release
+    runs-on: windows-latest
+    # This job only starts if Job 3 (publish) passed successfully
+    needs: publish
+    # Write permission is needed to create tags and releases on GitHub
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup .NET 10
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+
+      - name: Restore dependencies
+        run: dotnet restore ClientApp/ClientApp.csproj
+
+      - name: Publish self-contained EXE
+        run: >
+          dotnet publish ClientApp/ClientApp.csproj
+          --configuration Release
+          --runtime win-x64
+          --self-contained true
+          -p:PublishSingleFile=true
+          -p:IncludeNativeLibrariesForSelfExtract=true
+          --output ./publish
+
+      # Create a git tag using the run number to generate a unique version.
+
+      - name: Create version tag
+        id: tag
+        run: |
+          $version = "v1.0.${{ github.run_number }}"
+          echo "VERSION=$version" >> $env:GITHUB_OUTPUT
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git tag $version
+          git push origin $version
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.tag.outputs.VERSION }}
+          name: "Astronomical Processing System ${{ steps.tag.outputs.VERSION }}"
+          body: |
+            ## Astronomical Processing System
+            **Client Application - Automatic Release**
+
+            ### What's included
+            - Self-contained Windows executable (no .NET install required)
+            - Built from commit: ${{ github.sha }}
+
+            ### How to run
+            Download `ClientApp.exe` below and run it directly.
+            Make sure `ServerApp` is running first.
+          files: ./publish/ClientApp.exe
+          draft: false
+          prerelease: false
