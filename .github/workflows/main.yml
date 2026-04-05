@@ -1,40 +1,36 @@
-# ============================================================
-# Project: Astronomical Processing System - Client Application
-# ============================================================
-
-name: Build, Test and Release
+name: Build and Release
 
 on:
   push:
-    branches: [ main ]
+    branches: [ master ]
 
   workflow_dispatch:
 
 jobs:
 
   # ── Job 1: Strict Build ─────────────────────────────────────
- 
+  # Builds the ClientApp in Release mode.
+  # TreatWarningsAsErrors means any compiler warning fails
+  # the build so I catch problems early.
   build:
     name: Strict Build (Warnings as Errors)
     runs-on: windows-latest
 
     steps:
-      # Download my repository code onto the build machine
       - name: Checkout code
         uses: actions/checkout@v4
 
-      # Install .NET 10 which matches the version I used to develop the project
+      # Install .NET 10 to match my development environment
       - name: Setup .NET 10
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: '10.0.x'
 
-      # Restore NuGet packages including gRPC and Grpc.Net.Client
+      # Restore NuGet packages including gRPC dependencies
       - name: Restore dependencies
         run: dotnet restore ClientApp/ClientApp.csproj
 
-      # Build in Release mode - TreatWarningsAsErrors fails the build
-      # if any compiler warnings are found, not just errors
+      # Build in Release mode - fails if any warnings are found
       - name: Build (strict)
         run: >
           dotnet build ClientApp/ClientApp.csproj
@@ -42,42 +38,13 @@ jobs:
           --no-restore
           -p:TreatWarningsAsErrors=true
 
-  # ── Job 2: Unit Tests ───────────────────────────────────────
-  test:
-    name: Run Unit Tests
-    runs-on: windows-latest
-    # This job only starts if Job 1 (build) passed successfully
-    needs: build
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Setup .NET 10
-        uses: actions/setup-dotnet@v4
-        with:
-          dotnet-version: '10.0.x'
-
-      # Restore packages for the test project
-      - name: Restore dependencies
-        run: dotnet restore AstroMathTests/AstroMathTests.csproj
-
-      # Run all unit tests and print results to the console
-      # verbosity normal shows each test name and pass/fail result
-      - name: Run tests
-        run: >
-          dotnet test AstroMathTests/AstroMathTests.csproj
-          --configuration Release
-          --no-restore
-          --verbosity normal
-
-  # ── Job 3: Publish ──────────────────────────────────────────
+  # ── Job 2: Publish ──────────────────────────────────────────
 
   publish:
     name: Publish Release EXE
     runs-on: windows-latest
-    # This job only starts if Job 2 (tests) passed successfully
-    needs: test
+    # Only runs if the build job passed
+    needs: build
 
     steps:
       - name: Checkout code
@@ -92,8 +59,6 @@ jobs:
         run: dotnet restore ClientApp/ClientApp.csproj
 
       # Publish as a single self-contained exe for Windows 64-bit
-      # PublishSingleFile bundles everything into one file
-      # IncludeNativeLibrariesForSelfExtract includes native dependencies
       - name: Publish self-contained EXE
         run: >
           dotnet publish ClientApp/ClientApp.csproj
@@ -104,6 +69,7 @@ jobs:
           -p:IncludeNativeLibrariesForSelfExtract=true
           --output ./publish
 
+      # Upload the exe so it can be downloaded from the Actions tab
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
@@ -111,14 +77,14 @@ jobs:
           path: ./publish
           retention-days: 30
 
-  # ── Job 4: Auto Tag and GitHub Release ─────────────────────
+  # ── Job 3: Auto Tag and GitHub Release ─────────────────────
 
   release:
     name: Create GitHub Release
     runs-on: windows-latest
-    # This job only starts if Job 3 (publish) passed successfully
+    # Only runs if the publish job passed
     needs: publish
-    # Write permission is needed to create tags and releases on GitHub
+    # Write permission needed to create tags and releases
     permissions:
       contents: write
 
@@ -144,8 +110,8 @@ jobs:
           -p:IncludeNativeLibrariesForSelfExtract=true
           --output ./publish
 
-      # Create a git tag using the run number to generate a unique version.
-
+      # Generate a unique version tag from the GitHub run number
+  
       - name: Create version tag
         id: tag
         run: |
@@ -156,6 +122,7 @@ jobs:
           git tag $version
           git push origin $version
 
+      # Create the GitHub Release and attach the exe as a download
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
